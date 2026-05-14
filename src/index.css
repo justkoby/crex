@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+@font-face {
+  font-family: 'Wallop';
+  src: url('/fonts/WallopTRIALVF-BF6719a5ce88851.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+:root {
+  /* Colors */
+  --deep-wine: #5A1026;
+  --gold: #C9A227;
+  --white: #FFFFFF;
+  --warm-ivory: #F8F3EA;
+  --charcoal: #222222;
+  --black: #000000;
+  
+  /* Fonts */
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Wallop', sans-serif;
+  
+  /* Spacing */
+  --container-max-width: 1440px;
+  --header-height: 90px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: var(--font-body);
+  background-color: var(--white);
+  color: var(--charcoal);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--deep-wine);
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: 60px; /* Requested size */
+  letter-spacing: -0.02em;
+}
+
+p {
+  font-size: 1.1rem;
+  color: var(--charcoal);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  font-family: var(--font-body);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  background-color: var(--gold);
+  color: var(--deep-wine);
+}
+
+.btn-primary:hover {
+  background-color: #b89322;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(201, 162, 39, 0.2);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--deep-wine);
+  border: 1px solid var(--deep-wine);
+}
+
+.btn-secondary:hover {
+  background-color: var(--deep-wine);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* Section Helpers */
+.section-padding {
+  padding: 120px 0;
+}
+
+.light-bg {
+  background-color: var(--warm-ivory);
+}
+
+.white-bg {
+  background-color: var(--white);
+}

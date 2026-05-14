@@ -1,0 +1,738 @@
+/* ==========================================================================
+   CSS Variables & Tokens
+   ========================================================================== */
+:root {
+    /* Color Palette */
+    --deep-wine: #5A1026;
+    --deep-wine-dark: #4B0F24;
+    --rich-burgundy: #7A1E3A;
+    --gold: #C9A227;
+    --gold-hover: #b89322;
+    --soft-gold: #E6C766;
+    --white: #FFFFFF;
+    --warm-ivory: #F8F3EA;
+    --charcoal: #222222;
+    --charcoal-light: #444444;
+
+    /* Typography */
+    --font-primary: 'Inter', sans-serif;
+    
+    /* Spacing & Layout */
+    --section-padding: 80px 0;
+    --container-width: 1200px;
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --border-radius: 8px;
+    
+    /* Shadows */
+    --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
+    --shadow-md: 0 10px 20px rgba(0,0,0,0.08);
+    --shadow-lg: 0 20px 40px rgba(90, 16, 38, 0.1);
+}
+
+/* ==========================================================================
+   Reset & Base Styles
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--charcoal);
+    background-color: var(--white);
+    line-height: 1.6;
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.01em;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-padding {
+    padding: var(--section-padding);
+}
+
+/* Backgrounds & Text Colors */
+.light-bg {
+    background-color: var(--warm-ivory);
+}
+
+.dark-bg {
+    background-color: var(--deep-wine-dark);
+}
+
+.wine-bg {
+    background-color: var(--deep-wine);
+}
+
+.text-white {
+    color: var(--white);
+}
+
+.text-gold {
+    color: var(--gold);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mb-4 {
+    margin-bottom: 2rem;
+}
+
+.mt-4 {
+    margin-top: 2rem;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    text-align: center;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+/* Primary button: Gold background + deep wine text */
+.btn-primary {
+    background-color: var(--gold);
+    color: var(--deep-wine);
+    border: 2px solid var(--gold);
+}
+
+.btn-primary:hover {
+    background-color: var(--gold-hover);
+    border-color: var(--gold-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Secondary button: Transparent border + white/gold text */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.btn-secondary:hover {
+    background-color: var(--white);
+    color: var(--deep-wine);
+    transform: translateY(-2px);
+}
+
+/* Inverse secondary for light backgrounds */
+.light-bg .btn-secondary,
+header.scrolled .btn-secondary {
+    color: var(--deep-wine);
+    border-color: var(--deep-wine);
+}
+
+.light-bg .btn-secondary:hover,
+header.scrolled .btn-secondary:hover {
+    background-color: var(--deep-wine);
+    color: var(--white);
+}
+
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 20px 0;
+    transition: var(--transition);
+    background-color: transparent;
+}
+
+header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
+    padding: 15px 0;
+}
+
+header.scrolled .logo a,
+header.scrolled .desktop-nav a {
+    color: var(--charcoal);
+}
+
+header.scrolled .desktop-nav a:hover {
+    color: var(--deep-wine);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 1px;
+}
+
+.desktop-nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+.desktop-nav a {
+    color: var(--white);
+    font-weight: 500;
+    position: relative;
+}
+
+.desktop-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--gold);
+    transition: var(--transition);
+}
+
+.desktop-nav a:hover::after {
+    width: 100%;
+}
+
+.header-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.header-actions .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--white);
+    border-radius: 3px;
+    transition: var(--transition);
+}
+
+header.scrolled .mobile-menu-toggle span {
+    background-color: var(--charcoal);
+}
+
+/* Mobile Nav Overlay */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--deep-wine);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.mobile-nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav ul {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mobile-nav a {
+    font-size: 1.5rem;
+    color: var(--white);
+    font-weight: 600;
+}
+
+.mobile-nav a:hover {
+    color: var(--gold);
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero-bg-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #d1d5db; /* Gray placeholder */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.placeholder-text {
+    font-size: 1.2rem;
+    color: #6b7280;
+    font-weight: 500;
+    border: 2px dashed #9ca3af;
+    padding: 20px 40px;
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Deep Wine Overlay with gradient */
+    background: linear-gradient(135deg, rgba(90, 16, 38, 0.9) 0%, rgba(75, 15, 36, 0.7) 100%);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 800px;
+    color: var(--white);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    color: var(--warm-ivory);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+/* ==========================================================================
+   Layouts & Grids
+   ========================================================================== */
+.grid {
+    display: grid;
+    gap: 30px;
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.split-layout {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+.split-layout.reverse {
+    flex-direction: row-reverse;
+}
+
+.split-content, .split-list, .split-image {
+    flex: 1;
+}
+
+/* ==========================================================================
+   Sections Components
+   ========================================================================== */
+.section-header {
+    margin-bottom: 3rem;
+    max-width: 700px;
+}
+
+.section-header.center {
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+/* Feature Cards (How We Help) */
+.feature-card {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.05);
+    height: 100%;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--gold);
+}
+
+.highlighted-card {
+    background: var(--deep-wine);
+    color: var(--white);
+}
+
+.highlighted-card h3 {
+    color: var(--gold);
+}
+
+.highlighted-card p {
+    color: var(--warm-ivory);
+}
+
+.card-icon {
+    width: 50px;
+    height: 50px;
+    background-color: var(--warm-ivory);
+    border-radius: 50%;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.highlighted-card .card-icon {
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* Placeholder for icons */
+.card-icon::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background-color: var(--gold);
+    border-radius: 4px;
+}
+
+/* Industries List */
+.industry-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.industry-list li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: var(--warm-ivory);
+    border-radius: var(--border-radius);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--deep-wine);
+    border: 1px solid transparent;
+}
+
+.industry-list li a:hover {
+    background-color: var(--white);
+    border-color: var(--gold);
+    box-shadow: var(--shadow-md);
+    transform: translateX(10px);
+}
+
+.arrow {
+    color: var(--gold);
+    transition: transform 0.3s;
+}
+
+.industry-list li a:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* Trust Section */
+.trust-grid {
+    margin-top: 40px;
+}
+
+.trust-item {
+    border-top: 2px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+}
+
+/* Image Placeholders */
+.image-placeholder {
+    width: 100%;
+    height: 500px;
+    background-color: #e5e7eb;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    color: #6b7280;
+    font-weight: 500;
+    border: 2px dashed #9ca3af;
+}
+
+/* Testimonials */
+.testimonial-slider {
+    background-color: var(--deep-wine);
+    padding: 60px;
+    border-radius: var(--border-radius);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial-slider::before {
+    content: '"';
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    font-size: 8rem;
+    color: rgba(201, 162, 39, 0.2); /* Gold transparent */
+    font-family: serif;
+    line-height: 1;
+}
+
+.quote {
+    font-size: 1.5rem;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.author {
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+footer {
+    background-color: var(--charcoal);
+    color: var(--white);
+    padding: 80px 0 20px;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.footer-brand {
+    max-width: 300px;
+}
+
+.footer-brand .logo {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+
+.footer-brand p {
+    color: #9ca3af;
+}
+
+.footer-links-grid {
+    display: flex;
+    gap: 80px;
+}
+
+.footer-col h4 {
+    color: var(--white);
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.footer-col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-col a {
+    color: #9ca3af;
+    font-size: 0.95rem;
+}
+
+.footer-col a:hover {
+    color: var(--gold);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+@media (max-width: 992px) {
+    .desktop-nav, .header-actions .btn {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .split-layout, .split-layout.reverse {
+        flex-direction: column;
+    }
+
+    .footer-top {
+        flex-direction: column;
+    }
+    
+    .footer-links-grid {
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .section-padding {
+        padding: 50px 0;
+    }
+
+    .testimonial-slider {
+        padding: 40px 20px;
+    }
+
+    .quote {
+        font-size: 1.25rem;
+    }
+}
