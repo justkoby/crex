@@ -701,21 +701,17 @@ function App() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="final-cta-section section-padding">
-        <div className="container">
-          <div className="final-cta-card">
-            <div className="cta-pattern"></div>
-            <div className="cta-content">
-              <span className="cta-small-label">JOIN THE NETWORK</span>
-              <h2 className="cta-headline">“Experience Still Has the Power to Transform Society”</h2>
-              <p className="cta-text">
-                CREX connects retired professionals with opportunities to mentor, advise, train, consult, and contribute to sustainable development across Ghana and Africa.
-              </p>
-              <div className="cta-actions">
-                <button className="btn btn-primary cta-btn-gold">Register as a Retired Expert</button>
-                <button className="btn btn-secondary cta-btn-outline">Partner With CREX</button>
-              </div>
-            </div>
+      <section className="final-cta-section" style={{backgroundImage: 'url(/bg-01.jpg)'}}>
+        <div className="cta-overlay"></div>
+        <div className="cta-content">
+          <span className="cta-small-label">JOIN THE NETWORK</span>
+          <h2 className="cta-headline">Experience Still Has the Power to Transform Society</h2>
+          <p className="cta-text">
+            CREX connects retired professionals with opportunities to mentor, advise, train, consult, and contribute to sustainable development across Ghana and Africa.
+          </p>
+          <div className="cta-actions">
+            <button className="btn btn-primary cta-btn-gold">Register as a Retired Expert</button>
+            <button className="btn btn-secondary cta-btn-outline">Partner With CREX</button>
           </div>
         </div>
       </section>
@@ -742,7 +738,7 @@ function App() {
               </div>
             </div>
             
-            <div className="footer-col">
+            <div className="footer-col footer-col-desktop">
               <h4 className="footer-title">Quick Links</h4>
               <ul className="footer-links">
                 <li><a href="#">About CREX</a></li>
@@ -756,7 +752,7 @@ function App() {
               </ul>
             </div>
 
-            <div className="footer-col">
+            <div className="footer-col footer-col-desktop">
               <h4 className="footer-title">Programs & Activities</h4>
               <ul className="footer-links">
                 <li><a href="#">Mentorship</a></li>
