@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './App.css'
 import AboutPage from './About'
+import ContactPage from './Contact'
 
 const slides = [
   {
@@ -14,7 +15,7 @@ const slides = [
   },
   {
     id: 2,
-    label: "Advisory & Consultancy",
+    label: "Consultancy",
     image: "/img-2.jpg",
     headline: "Expertise That Still Drives Progress",
     descriptor: "Former Executive / Governance & Advisory Expert",
@@ -23,6 +24,15 @@ const slides = [
   },
   {
     id: 3,
+    label: "Training",
+    image: "/img-1.jpg",
+    headline: "Building Capacity for the Future",
+    descriptor: "Retired Professionals / Skills Transfer",
+    supportingText: "“CREX facilitates training programs where retired experts pass down technical and leadership skills to the younger workforce.”",
+    cta: "Join the CREX Network →"
+  },
+  {
+    id: 4,
     label: "Community Impact",
     image: "/img-3.jpg",
     headline: "Retirement Is A New Phase of Service",
@@ -453,7 +463,7 @@ function App() {
           <a href="#" className="mobile-nav-link" onClick={(e) => { e.preventDefault(); navigateToSection('.experts-section'); }}>For Experts</a>
           <a href="#" className="mobile-nav-link" onClick={(e) => { e.preventDefault(); navigateToSection('.final-cta-section'); }}>Projects & Partnerships</a>
           <a href="#" className="mobile-nav-link" onClick={(e) => { e.preventDefault(); navigateToSection('.insights-section'); }}>Publications</a>
-          <button className="btn btn-primary" style={{ marginTop: '30px', width: '100%' }} onClick={() => navigateToSection('.final-cta-section')}>Join CREX</button>
+          <button className="btn btn-primary" style={{ marginTop: '30px', width: '100%' }} onClick={() => { setCurrentPage('contact'); setIsMenuOpen(false); window.scrollTo(0, 0); }}>Join CREX</button>
         </div>
       </div>
 
@@ -474,7 +484,7 @@ function App() {
           </nav>
           
           <div className="header-actions">
-            <button className="btn btn-primary desktop-btn" onClick={() => navigateToSection('.final-cta-section')}>Join CREX</button>
+            <button className="btn btn-primary desktop-btn" onClick={() => { setCurrentPage('contact'); window.scrollTo(0, 0); }}>Join CREX</button>
             <button className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={() => setIsMenuOpen(true)}>
               <span></span>
               <span></span>
@@ -505,7 +515,11 @@ function App() {
             <blockquote className="slide-quote" key={`q-${currentSlide}`}>
               {slides[currentSlide].supportingText}
             </blockquote>
-            <button className="btn btn-primary cta-arrow" key={`btn-${currentSlide}`}>
+            <button 
+              className="btn btn-primary cta-arrow" 
+              key={`btn-${currentSlide}`}
+              onClick={() => { setCurrentPage('contact'); window.scrollTo(0, 0); }}
+            >
               {slides[currentSlide].cta}
             </button>
           </div>
@@ -640,7 +654,7 @@ function App() {
             <p className="section-desc white-p">
               CREX brings together retired professionals, former executives, educators, researchers, engineers, public servants, and development experts whose decades of experience continue to create impact across Africa.
             </p>
-            <button className="btn btn-primary">Join the CREX Network</button>
+            <button className="btn btn-primary" onClick={() => { setCurrentPage('contact'); window.scrollTo(0, 0); }}>Join the CREX Network</button>
           </div>
           
           <div className="experts-slider-container">
@@ -656,18 +670,15 @@ function App() {
                     </div>
                   </div>
                   <div className="expert-info">
-                    <div className="expert-header-row">
-                      <div className="expert-avatar-mobile">{getInitials(expert.name)}</div>
-                      <div className="expert-meta-info">
+                    <div className="expert-top">
+                      <div className="expert-avatar">{getInitials(expert.name)}</div>
+                      <div>
                         <h4 className="expert-name">{expert.name}</h4>
-                        <p className="expert-role-desktop">{expert.role}</p>
                       </div>
                     </div>
-                    <div className="expert-details-body">
-                      <p className="expert-focus">{expert.expertise}</p>
-                      <p className="expert-role-mobile">{expert.role}</p>
-                      {expert.years && <p className="expert-years">{expert.years}</p>}
-                    </div>
+                    <p className="expert-role">{expert.role}</p>
+                    <p className="expert-description">{expert.expertise}</p>
+                    {expert.years && <p className="expert-experience">{expert.years}</p>}
                     <div className="expert-tags">
                       {expert.tags.map((tag, idx) => (
                         <span key={idx} className="expert-tag">{tag}</span>
@@ -743,14 +754,16 @@ function App() {
             CREX connects retired professionals with opportunities to mentor, advise, train, consult, and contribute to sustainable development across Ghana and Africa.
           </p>
           <div className="cta-actions">
-            <button className="btn btn-primary cta-btn-gold">Register as a Retired Expert</button>
-            <button className="btn btn-secondary cta-btn-outline">Partner With CREX</button>
+            <button className="btn btn-primary cta-btn-gold" onClick={() => { setCurrentPage('contact'); window.scrollTo(0, 0); }}>Register as a Retired Expert</button>
+            <button className="btn btn-secondary cta-btn-outline" onClick={() => { setCurrentPage('contact'); window.scrollTo(0, 0); }}>Partner With CREX</button>
           </div>
         </div>
       </section>
         </>
+      ) : currentPage === 'about' ? (
+        <AboutPage onNavigateToContact={() => { setCurrentPage('contact'); window.scrollTo(0, 0); }} />
       ) : (
-        <AboutPage />
+        <ContactPage />
       )}
 
       {/* Footer */}
@@ -786,7 +799,7 @@ function App() {
                 <li><a href="#" onClick={(e) => { e.preventDefault(); navigateToSection('.experts-section'); }}>Areas of Expertise</a></li>
                 <li><a href="#" onClick={(e) => { e.preventDefault(); navigateToSection('.insights-section'); }}>Publications</a></li>
                 <li><a href="#" onClick={(e) => { e.preventDefault(); navigateToSection('.final-cta-section'); }}>Projects & Partnerships</a></li>
-                <li><a href="#" onClick={(e) => { e.preventDefault(); navigateToSection('.footer'); }}>Contact</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('contact'); window.scrollTo(0, 0); }}>Contact</a></li>
               </ul>
             </div>
 
@@ -811,7 +824,7 @@ function App() {
                 <span className="divider">|</span>
                 <a href="#" onClick={(e) => { e.preventDefault(); navigateToSection('.insights-section'); }}>Publications</a>
                 <span className="divider">|</span>
-                <a href="#" onClick={(e) => { e.preventDefault(); navigateToSection('.footer'); }}>Contact</a>
+                <a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('contact'); window.scrollTo(0, 0); }}>Contact</a>
               </div>
             </div>
 

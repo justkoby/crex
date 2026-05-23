@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './About.css'
 
-export default function AboutPage() {
+export default function AboutPage({ onNavigateToContact }) {
   const [activeTab, setActiveTab] = useState('board')
 
   const teamData = {
@@ -63,7 +63,7 @@ export default function AboutPage() {
                 CREX transforms retiree expertise into meaningful impact for national and continental development across Africa.
               </p>
               <div className="about-hero-actions">
-                <button className="btn btn-primary">Join the Network</button>
+                <button className="btn btn-primary" onClick={onNavigateToContact}>Join the Network</button>
                 <a href="#who-we-are" className="btn btn-secondary" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>Learn More</a>
               </div>
             </div>
@@ -386,8 +386,8 @@ export default function AboutPage() {
               CREX is building a future where retirement is not viewed as withdrawal from society, but as a transition into continued relevance, mentorship, leadership, and impact.
             </p>
             <div className="about-cta-actions">
-              <button className="btn btn-primary">Register as Retired Expert</button>
-              <button className="btn btn-secondary">Partner With CREX</button>
+              <button className="btn btn-primary" onClick={onNavigateToContact}>Register as Retired Expert</button>
+              <button className="btn btn-secondary" onClick={onNavigateToContact}>Partner With CREX</button>
             </div>
           </div>
         </div>
