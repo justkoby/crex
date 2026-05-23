@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './App.css'
+import AboutPage from './About'
 
 const slides = [
   {
@@ -35,24 +36,27 @@ const experts = [
   {
     id: 1,
     name: "Prof. Kwabena Mensah",
-    role: "Former Director, Ministry of Education",
+    role: "Former Public Sector Advisor",
     expertise: "Governance & Policy Expert",
+    years: "25+ years experience",
     quote: "“Experience becomes most valuable when it is shared.”",
     tags: ["Governance", "Education", "Public Policy"]
   },
   {
     id: 2,
-    name: "Dr. Ama Boateng",
-    role: "Retired Chief Medical Officer",
-    expertise: "Healthcare Strategy & Administration",
+    name: "Dr. Akosua Boateng",
+    role: "Former University Lecturer",
+    expertise: "Education & Research Expert",
+    years: "30+ years experience",
     quote: "“Retirement should not mean the end of contribution.”",
-    tags: ["Healthcare", "Leadership", "Research"]
+    tags: ["Education", "Research", "Mentorship"]
   },
   {
     id: 3,
     name: "Ing. Samuel Osei",
     role: "Former Head of Infrastructure, GHA",
     expertise: "Civil Engineering & Project Management",
+    years: "35+ years experience",
     quote: "“Practical wisdom is the bridge to sustainable progress.”",
     tags: ["Engineering", "Infrastructure", "Leadership"]
   },
@@ -61,6 +65,7 @@ const experts = [
     name: "Mrs. Elizabeth Addo",
     role: "Retired Regional Director, Agriculture",
     expertise: "Sustainable Farming & Rural Development",
+    years: "28+ years experience",
     quote: "“Supporting communities is a lifetime commitment.”",
     tags: ["Agriculture", "Community Development", "Finance"]
   },
@@ -69,6 +74,7 @@ const experts = [
     name: "Mr. Kofi Asante",
     role: "Former CTO, National ICT Agency",
     expertise: "Digital Transformation & Cyber Security",
+    years: "27+ years experience",
     quote: "“Innovation thrives on the foundation of experience.”",
     tags: ["ICT", "Technology", "Public Policy"]
   }
@@ -376,26 +382,31 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [selectedPost, setSelectedPost] = useState(null)
   const numbersRef = useRef(null)
-  const isFirstRender = useRef(true)
   const SLIDE_DURATION = 8000
+  const [currentPage, setCurrentPage] = useState('home')
+
+  const navigateToSection = (sectionSelector) => {
+    setCurrentPage('home')
+    setIsMenuOpen(false)
+    setTimeout(() => {
+      const element = document.querySelector(sectionSelector)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    }, 100)
+  }
+
+  const getInitials = (name) => {
+    const cleanName = name.replace(/^(Prof\.|Dr\.|Mrs\.|Ing\.|Mr\.)\s+/i, '')
+    return cleanName.split(' ').slice(0, 2).map(n => n[0]).join('').toUpperCase()
+  }
 
   // Force scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false
-      return
-    }
-    if (numbersRef.current) {
-      const activeItem = numbersRef.current.querySelector('.number-item.active');
-      if (activeItem) {
-        activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      }
-    }
-  }, [activeReason]);
+
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -436,34 +447,34 @@ function App() {
       <div className={`mobile-nav ${isMenuOpen ? 'active' : ''}`}>
         <button className="close-menu" onClick={() => setIsMenuOpen(false)}>&times;</button>
         <div className="mobile-nav-content">
-          <a href="#" className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>About CREX</a>
-          <a href="#" className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>How It Works</a>
-          <a href="#" className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>Opportunities</a>
-          <a href="#" className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>For Experts</a>
-          <a href="#" className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>Projects & Partnerships</a>
-          <a href="#" className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>Publications</a>
-          <button className="btn btn-primary" style={{ marginTop: '30px', width: '100%' }}>Join CREX</button>
+          <a href="#" className={`mobile-nav-link ${currentPage === 'about' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); setCurrentPage('about'); setIsMenuOpen(false); window.scrollTo(0, 0); }}>About CREX</a>
+          <a href="#" className="mobile-nav-link" onClick={(e) => { e.preventDefault(); navigateToSection('.impact-section'); }}>How It Works</a>
+          <a href="#" className="mobile-nav-link" onClick={(e) => { e.preventDefault(); navigateToSection('.why-choose-section'); }}>Opportunities</a>
+          <a href="#" className="mobile-nav-link" onClick={(e) => { e.preventDefault(); navigateToSection('.experts-section'); }}>For Experts</a>
+          <a href="#" className="mobile-nav-link" onClick={(e) => { e.preventDefault(); navigateToSection('.final-cta-section'); }}>Projects & Partnerships</a>
+          <a href="#" className="mobile-nav-link" onClick={(e) => { e.preventDefault(); navigateToSection('.insights-section'); }}>Publications</a>
+          <button className="btn btn-primary" style={{ marginTop: '30px', width: '100%' }} onClick={() => navigateToSection('.final-cta-section')}>Join CREX</button>
         </div>
       </div>
 
       {/* Navbar */}
       <header className="navbar">
         <div className="container navbar-container">
-          <div className="logo-section">
+          <div className="logo-section" onClick={() => { setCurrentPage('home'); window.scrollTo(0, 0); }} style={{ cursor: 'pointer' }}>
             <div className="brand-box">CREX</div>
           </div>
           
           <nav className="nav-links">
-            <a href="#" className="nav-link">About CREX</a>
-            <a href="#" className="nav-link">How It Works</a>
-            <a href="#" className="nav-link">Opportunities</a>
-            <a href="#" className="nav-link">For Experts</a>
-            <a href="#" className="nav-link">Projects & Partnerships</a>
-            <a href="#" className="nav-link">Publications</a>
+            <a href="#" className={`nav-link ${currentPage === 'about' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); setCurrentPage('about'); window.scrollTo(0, 0); }}>About CREX</a>
+            <a href="#" className="nav-link" onClick={(e) => { e.preventDefault(); navigateToSection('.impact-section'); }}>How It Works</a>
+            <a href="#" className="nav-link" onClick={(e) => { e.preventDefault(); navigateToSection('.why-choose-section'); }}>Opportunities</a>
+            <a href="#" className="nav-link" onClick={(e) => { e.preventDefault(); navigateToSection('.experts-section'); }}>For Experts</a>
+            <a href="#" className="nav-link" onClick={(e) => { e.preventDefault(); navigateToSection('.final-cta-section'); }}>Projects & Partnerships</a>
+            <a href="#" className="nav-link" onClick={(e) => { e.preventDefault(); navigateToSection('.insights-section'); }}>Publications</a>
           </nav>
           
           <div className="header-actions">
-            <button className="btn btn-primary desktop-btn">Join CREX</button>
+            <button className="btn btn-primary desktop-btn" onClick={() => navigateToSection('.final-cta-section')}>Join CREX</button>
             <button className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={() => setIsMenuOpen(true)}>
               <span></span>
               <span></span>
@@ -473,8 +484,10 @@ function App() {
         </div>
       </header>
 
-      {/* Hero Carousel */}
-      <section className="hero-fullscreen">
+      {currentPage === 'home' ? (
+        <>
+          {/* Hero Carousel */}
+          <section className="hero-fullscreen">
         <div className="carousel-background">
           {slides.map((slide, index) => (
             <div 
@@ -583,7 +596,14 @@ function App() {
                   <div 
                     key={reason.id} 
                     className={`number-item ${index === activeReason ? 'active' : ''}`}
-                    onClick={() => setActiveReason(index)}
+                    onClick={(e) => {
+                      setActiveReason(index);
+                      const container = e.currentTarget.parentElement;
+                      if (container) {
+                        const left = e.currentTarget.offsetLeft - (container.clientWidth / 2) + (e.currentTarget.clientWidth / 2);
+                        container.scrollTo({ left, behavior: 'smooth' });
+                      }
+                    }}
                   >
                     <span className="number-id">{reason.id}</span>
                     <span className="number-label desktop-only">{reason.label}</span>
@@ -636,9 +656,18 @@ function App() {
                     </div>
                   </div>
                   <div className="expert-info">
-                    <h4 className="expert-name">{expert.name}</h4>
-                    <p className="expert-role">{expert.role}</p>
-                    <p className="expert-focus">{expert.expertise}</p>
+                    <div className="expert-header-row">
+                      <div className="expert-avatar-mobile">{getInitials(expert.name)}</div>
+                      <div className="expert-meta-info">
+                        <h4 className="expert-name">{expert.name}</h4>
+                        <p className="expert-role-desktop">{expert.role}</p>
+                      </div>
+                    </div>
+                    <div className="expert-details-body">
+                      <p className="expert-focus">{expert.expertise}</p>
+                      <p className="expert-role-mobile">{expert.role}</p>
+                      {expert.years && <p className="expert-years">{expert.years}</p>}
+                    </div>
                     <div className="expert-tags">
                       {expert.tags.map((tag, idx) => (
                         <span key={idx} className="expert-tag">{tag}</span>
@@ -649,6 +678,7 @@ function App() {
               ))}
             </div>
             <div className="slider-instructions desktop-only">Scroll to explore experts →</div>
+            <button className="btn btn-secondary view-experts-mobile" onClick={() => navigateToSection('.final-cta-section')}>View Expert Network</button>
           </div>
         </div>
       </section>
@@ -658,18 +688,18 @@ function App() {
         <div className="container">
           <div className="insights-header">
             <div className="insights-header-text">
-              <h2 className="section-title">Latest Insights</h2>
+              <h2 className="section-title">Insights & Publications</h2>
               <p className="section-desc">
                 Drawing from decades of professional experience, CREX documents and shares insights that support policy, institutional development, mentorship, and sustainable growth across Africa.
               </p>
             </div>
-            <a href="#" className="view-all-link">View All Insights <span>▶</span></a>
+            <a href="#" className="view-all-link">View All Publications <span>▶</span></a>
           </div>
 
           <div className="insights-layout">
             <div className="insights-grid">
-              {insights.slice(0, 4).map((item) => (
-                <div className="insight-card" key={item.id}>
+              {insights.slice(0, 4).map((item, idx) => (
+                <div className={`insight-card ${idx === 0 ? 'featured' : ''}`} key={item.id}>
                   <div className="insight-category">{item.category}</div>
                   <h3 className="insight-title">{item.title}</h3>
                   <p className="insight-excerpt">{item.excerpt}</p>
@@ -677,7 +707,7 @@ function App() {
                     className="insight-read-more" 
                     onClick={() => setSelectedPost(item)}
                   >
-                    Read More
+                    Read insight →
                   </button>
                 </div>
               ))}
@@ -698,6 +728,8 @@ function App() {
               </div>
             </div>
           </div>
+
+          <button className="btn btn-secondary insights-cta-mobile" onClick={() => navigateToSection('.final-cta-section')}>View All Publications</button>
         </div>
       </section>
 
@@ -716,6 +748,10 @@ function App() {
           </div>
         </div>
       </section>
+        </>
+      ) : (
+        <AboutPage />
+      )}
 
       {/* Footer */}
       <footer className="footer">
@@ -723,9 +759,11 @@ function App() {
           <div className="footer-grid">
             <div className="footer-col">
               <div className="footer-logo">CREX</div>
+              <p className="footer-tagline-mobile">Experience still has a role to play.</p>
               <p className="footer-description">
-                The Centre for Retired Experts (CREX) mobilises and deploys retired professionals to support mentorship, consultancy, governance, training, research, and sustainable development across Africa.
+                The Centre for Retired Experts (CREX) connects retired professionals to opportunities in mentorship, consultancy, governance, training, research, and sustainable development.
               </p>
+              <button className="btn btn-primary footer-cta-mobile" onClick={() => navigateToSection('.final-cta-section')}>Register as Retired Expert</button>
               <div className="social-links">
                 <a href="#" className="social-link">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -742,14 +780,13 @@ function App() {
             <div className="footer-col footer-col-desktop">
               <h4 className="footer-title">Quick Links</h4>
               <ul className="footer-links">
-                <li><a href="#">About CREX</a></li>
-                <li><a href="#">How CREX Works</a></li>
-                <li><a href="#">Opportunities</a></li>
-                <li><a href="#">Areas of Expertise</a></li>
-                <li><a href="#">Publications</a></li>
-                <li><a href="#">Projects & Partnerships</a></li>
-                <li><a href="#">News & Events</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('about'); window.scrollTo(0, 0); }}>About CREX</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); navigateToSection('.impact-section'); }}>How CREX Works</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); navigateToSection('.why-choose-section'); }}>Opportunities</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); navigateToSection('.experts-section'); }}>Areas of Expertise</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); navigateToSection('.insights-section'); }}>Publications</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); navigateToSection('.final-cta-section'); }}>Projects & Partnerships</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); navigateToSection('.footer'); }}>Contact</a></li>
               </ul>
             </div>
 
@@ -765,14 +802,26 @@ function App() {
               </ul>
             </div>
 
+            <div className="footer-col footer-col-mobile-links">
+              <h4 className="footer-title">Quick Links</h4>
+              <div className="footer-links-mobile">
+                <a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('about'); window.scrollTo(0, 0); }}>About</a>
+                <span className="divider">|</span>
+                <a href="#" onClick={(e) => { e.preventDefault(); navigateToSection('.why-choose-section'); }}>Opportunities</a>
+                <span className="divider">|</span>
+                <a href="#" onClick={(e) => { e.preventDefault(); navigateToSection('.insights-section'); }}>Publications</a>
+                <span className="divider">|</span>
+                <a href="#" onClick={(e) => { e.preventDefault(); navigateToSection('.footer'); }}>Contact</a>
+              </div>
+            </div>
+
             <div className="footer-col">
-              <h4 className="footer-title">Contact Information</h4>
+              <h4 className="footer-title">Contact</h4>
               <div className="contact-info">
-                <p><strong>Centre for Retired Experts (CREX)</strong></p>
-                <p>No. G206 Goroka Street, Amrahia, Accra</p>
-                <p>P.O. Box CT 22, Cantonments, Accra</p>
-                <p style={{ marginTop: '15px' }}><strong>Phone:</strong><br />0266195525 / 0552352477</p>
-                <p style={{ marginTop: '10px' }}><strong>Email:</strong><br />crexghana@gmail.com</p>
+                <p className="desktop-only"><strong>Centre for Retired Experts (CREX)</strong></p>
+                <p><strong>Phone:</strong> <a href="tel:+233266195525">0266195525</a> / <a href="tel:+233552352477">0552352477</a></p>
+                <p style={{ marginTop: '10px' }}><strong>Email:</strong> <a href="mailto:crexghana@gmail.com">crexghana@gmail.com</a></p>
+                <p style={{ marginTop: '10px' }}><strong>Address:</strong> No. G206 Goroka Street, Amrahia, Accra<br /><span className="desktop-only">P.O. Box CT 22, Cantonments, Accra</span></p>
               </div>
             </div>
           </div>
