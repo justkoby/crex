@@ -1,0 +1,1078 @@
+/* ============================================================
+   CREX CANDIDATE REGISTRATION FORM — STYLES
+   ============================================================ */
+
+:root {
+  --crex-gold: #c9973a;
+  --crex-gold-light: #e8b84b;
+  --crex-dark: #1a1a2e;
+  --crex-darker: #12121e;
+  --crex-wine: #4a1328;
+  --crex-text: #2d2d3e;
+  --crex-muted: #6b7280;
+  --crex-border: #e2e8f0;
+  --crex-bg: #f8fafc;
+  --crex-white: #ffffff;
+  --crex-success: #10b981;
+  --crex-error: #ef4444;
+  --crex-radius: 12px;
+  --crex-radius-sm: 8px;
+  --crex-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --crex-shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.14);
+}
+
+/* ── Page Wrapper ──────────────────────────────────────────── */
+.register-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 16px 80px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.register-header {
+  text-align: center;
+  margin-bottom: 36px;
+  width: 100%;
+  max-width: 780px;
+}
+
+.register-logo-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+
+.register-logo-badge {
+  background: linear-gradient(135deg, var(--crex-gold), var(--crex-gold-light));
+  color: #1a1a2e;
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: 2px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(201, 151, 58, 0.4);
+}
+
+.register-logo-label {
+  color: rgba(255,255,255,0.7);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.register-main-title {
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.register-subtitle {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── Card ────────────────────────────────────────────────── */
+.register-card {
+  background: var(--crex-white);
+  border-radius: 20px;
+  box-shadow: var(--crex-shadow-lg);
+  width: 100%;
+  max-width: 780px;
+  overflow: hidden;
+}
+
+/* ── Progress Bar ────────────────────────────────────────── */
+.register-progress-section {
+  padding: 24px 32px 0;
+  border-bottom: 1px solid var(--crex-border);
+}
+
+.step-indicator-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.step-indicator-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--crex-muted);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.step-indicator-count {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--crex-gold);
+}
+
+.step-title-row {
+  margin-bottom: 16px;
+}
+
+.step-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--crex-text);
+  margin: 0;
+}
+
+/* Custom Progress Bar */
+.crex-progress-track {
+  width: 100%;
+  height: 6px;
+  background: #e9ecef;
+  border-radius: 100px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.crex-progress-fill {
+  height: 100%;
+  border-radius: 100px;
+  background: linear-gradient(90deg, var(--crex-gold), var(--crex-gold-light));
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(201, 151, 58, 0.4);
+}
+
+/* Step Dots */
+.step-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding-bottom: 20px;
+}
+
+.step-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  border: 2px solid var(--crex-border);
+  color: var(--crex-muted);
+  background: var(--crex-white);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.step-dot.active {
+  background: linear-gradient(135deg, var(--crex-gold), var(--crex-gold-light));
+  border-color: var(--crex-gold);
+  color: #1a1a2e;
+  box-shadow: 0 4px 12px rgba(201, 151, 58, 0.3);
+  transform: scale(1.15);
+}
+
+.step-dot.completed {
+  background: var(--crex-success);
+  border-color: var(--crex-success);
+  color: white;
+}
+
+/* ── Form Body ───────────────────────────────────────────── */
+.register-form-body {
+  padding: 32px;
+}
+
+/* ── Grid Layout ─────────────────────────────────────────── */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 24px;
+}
+
+.form-grid .col-full {
+  grid-column: 1 / -1;
+}
+
+/* ── Form Group ──────────────────────────────────────────── */
+.crex-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.crex-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--crex-text);
+  letter-spacing: 0.3px;
+}
+
+.crex-label .required-star {
+  color: var(--crex-error);
+  margin-left: 3px;
+}
+
+.crex-input,
+.crex-select {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--crex-border);
+  border-radius: var(--crex-radius-sm);
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  color: var(--crex-text);
+  background: #fcfcfd;
+  transition: all 0.2s ease;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.crex-input::placeholder {
+  color: #adb5bd;
+}
+
+.crex-input:focus,
+.crex-select:focus {
+  border-color: var(--crex-gold);
+  background: var(--crex-white);
+  box-shadow: 0 0 0 3px rgba(201, 151, 58, 0.12);
+}
+
+.crex-input.is-invalid,
+.crex-select.is-invalid {
+  border-color: var(--crex-error);
+  background: #fff5f5;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08);
+}
+
+.crex-input.is-valid,
+.crex-select.is-valid {
+  border-color: var(--crex-success);
+  background: #f0fdf4;
+}
+
+/* Select arrow */
+.crex-select-wrapper {
+  position: relative;
+}
+
+.crex-select-wrapper::after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid var(--crex-muted);
+  pointer-events: none;
+}
+
+.crex-helper-text {
+  font-size: 11.5px;
+  color: var(--crex-muted);
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.crex-helper-text svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.crex-error-text {
+  font-size: 11.5px;
+  color: var(--crex-error);
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ── Radio Buttons ───────────────────────────────────────── */
+.radio-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 4px 0;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.radio-option input[type="radio"] {
+  display: none;
+}
+
+.radio-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--crex-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.radio-custom::after {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--crex-gold);
+  transform: scale(0);
+  transition: transform 0.2s ease;
+}
+
+.radio-option input[type="radio"]:checked + .radio-custom {
+  border-color: var(--crex-gold);
+  box-shadow: 0 0 0 3px rgba(201, 151, 58, 0.12);
+}
+
+.radio-option input[type="radio"]:checked + .radio-custom::after {
+  transform: scale(1);
+}
+
+.radio-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--crex-text);
+}
+
+/* Pill-style radio for employment type */
+.radio-pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.radio-pill {
+  position: relative;
+  cursor: pointer;
+}
+
+.radio-pill input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radio-pill-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  border: 1.5px solid var(--crex-border);
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--crex-muted);
+  background: #f8fafc;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.radio-pill input[type="radio"]:checked + .radio-pill-label {
+  background: linear-gradient(135deg, var(--crex-gold), var(--crex-gold-light));
+  border-color: var(--crex-gold);
+  color: #1a1a2e;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(201, 151, 58, 0.25);
+}
+
+.radio-pill-label:hover {
+  border-color: var(--crex-gold);
+  color: var(--crex-text);
+}
+
+/* ── Checkbox Group ──────────────────────────────────────── */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.crex-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.crex-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-custom {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--crex-border);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.crex-checkbox input[type="checkbox"]:checked + .checkbox-custom {
+  background: var(--crex-gold);
+  border-color: var(--crex-gold);
+}
+
+.checkbox-check {
+  width: 10px;
+  height: 10px;
+  stroke: #1a1a2e;
+  fill: none;
+  stroke-width: 2.5;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.15s ease;
+}
+
+.crex-checkbox input[type="checkbox"]:checked ~ .checkbox-custom .checkbox-check,
+.crex-checkbox input[type="checkbox"]:checked + .checkbox-custom .checkbox-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.checkbox-label {
+  font-size: 14px;
+  color: var(--crex-text);
+}
+
+/* ── Section Divider ─────────────────────────────────────── */
+.form-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--crex-gold);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid #f0e4cc;
+  grid-column: 1 / -1;
+  margin-top: 8px;
+}
+
+/* ── File Upload ─────────────────────────────────────────── */
+.file-upload-zone {
+  border: 2px dashed var(--crex-border);
+  border-radius: var(--crex-radius);
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #f8fafc;
+}
+
+.file-upload-zone:hover,
+.file-upload-zone.has-file {
+  border-color: var(--crex-gold);
+  background: rgba(201, 151, 58, 0.04);
+}
+
+.file-upload-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.file-upload-text {
+  font-size: 13px;
+  color: var(--crex-muted);
+}
+
+.file-upload-text strong {
+  color: var(--crex-gold);
+}
+
+.file-upload-hint {
+  font-size: 11px;
+  color: #adb5bd;
+  margin-top: 4px;
+}
+
+.file-name-display {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--crex-success);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* ── Form Actions ────────────────────────────────────────── */
+.register-form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
+  border-top: 1px solid var(--crex-border);
+  background: #f8fafc;
+}
+
+.register-step-hint {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--crex-muted);
+  letter-spacing: 0.5px;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-crex-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: 1.5px solid var(--crex-border);
+  border-radius: 50px;
+  background: transparent;
+  color: var(--crex-muted);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-crex-back:hover:not(:disabled) {
+  border-color: var(--crex-text);
+  color: var(--crex-text);
+  background: var(--crex-white);
+}
+
+.btn-crex-back:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.btn-crex-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #c9973a, #e8b84b);
+  color: #1a1a2e;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(201, 151, 58, 0.35);
+}
+
+.btn-crex-next:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(201, 151, 58, 0.45);
+  background: linear-gradient(135deg, #d4a03d, #edc053);
+}
+
+.btn-crex-next:active {
+  transform: translateY(0);
+}
+
+/* ── Validation Alert ────────────────────────────────────── */
+.register-alert {
+  margin: 0 32px 16px;
+  padding: 14px 18px;
+  border-radius: var(--crex-radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  animation: slideDown 0.2s ease;
+}
+
+.register-alert-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+}
+
+.register-alert-success {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #16a34a;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ── Conditional Field Reveal ────────────────────────────── */
+.conditional-field {
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.conditional-field.hidden {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.conditional-field.visible {
+  max-height: 200px;
+  opacity: 1;
+}
+
+/* ── Success/Submit State ────────────────────────────────── */
+.register-success {
+  text-align: center;
+  padding: 60px 32px;
+}
+
+.success-icon {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, var(--crex-gold), var(--crex-gold-light));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  font-size: 32px;
+  box-shadow: 0 8px 32px rgba(201, 151, 58, 0.4);
+  animation: scaleIn 0.4s ease;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+.success-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--crex-text);
+  margin-bottom: 12px;
+}
+
+.success-text {
+  font-size: 15px;
+  color: var(--crex-muted);
+  max-width: 420px;
+  margin: 0 auto 32px;
+  line-height: 1.7;
+}
+
+/* ── Textarea ──────────────────────────────────────────────── */
+.crex-textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── Skills Tag Input ─────────────────────────────────────── */
+.skills-tag-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1.5px solid var(--crex-border);
+  border-radius: var(--crex-radius-sm);
+  background: #fcfcfd;
+  min-height: 48px;
+  cursor: text;
+  transition: all 0.2s ease;
+}
+
+.skills-tag-box:focus-within {
+  border-color: var(--crex-gold);
+  background: var(--crex-white);
+  box-shadow: 0 0 0 3px rgba(201, 151, 58, 0.12);
+}
+
+.skills-tag-box.is-valid {
+  border-color: var(--crex-success);
+  background: #f0fdf4;
+}
+
+.skills-tag-box.is-invalid {
+  border-color: var(--crex-error);
+  background: #fff5f5;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08);
+}
+
+.skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, var(--crex-gold), var(--crex-gold-light));
+  color: #1a1a2e;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 50px;
+  white-space: nowrap;
+  animation: tagPop 0.15s ease;
+}
+
+@keyframes tagPop {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+.skill-tag-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(26, 26, 46, 0.6);
+  font-size: 15px;
+  line-height: 1;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s ease;
+}
+
+.skill-tag-remove:hover {
+  color: #1a1a2e;
+}
+
+.skills-tag-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  color: var(--crex-text);
+  min-width: 120px;
+  flex: 1;
+}
+
+.skills-tag-input::placeholder {
+  color: #adb5bd;
+}
+
+/* ── Language Checkboxes ─────────────────────────────────── */
+.language-checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px 16px;
+  padding: 4px 0;
+}
+
+.language-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.lang-checkbox-input {
+  display: none;
+}
+
+.lang-checkbox-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--crex-border);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--crex-white);
+  transition: all 0.2s ease;
+}
+
+.lang-check-icon {
+  width: 11px;
+  height: 11px;
+  stroke: #1a1a2e;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.15s ease;
+}
+
+.lang-checkbox-input:checked + .lang-checkbox-custom {
+  background: linear-gradient(135deg, var(--crex-gold), var(--crex-gold-light));
+  border-color: var(--crex-gold);
+  box-shadow: 0 2px 8px rgba(201, 151, 58, 0.3);
+}
+
+.lang-checkbox-input:checked + .lang-checkbox-custom .lang-check-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.lang-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--crex-text);
+}
+
+/* ── CV Spec Row ─────────────────────────────────────────── */
+.cv-specs-row {
+  display: flex;
+  gap: 24px;
+  margin-top: 14px;
+  padding: 14px 18px;
+  background: #f8fafc;
+  border-radius: var(--crex-radius-sm);
+  border: 1px solid var(--crex-border);
+}
+
+.cv-spec-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cv-spec-icon {
+  font-size: 20px;
+}
+
+.cv-spec-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--crex-muted);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.cv-spec-val {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--crex-text);
+  margin-top: 2px;
+}
+
+.file-upload-zone.upload-error {
+  border-color: var(--crex-error);
+  background: #fff5f5;
+}
+
+.file-remove-btn {
+  margin-top: 10px;
+  padding: 5px 14px;
+  border: 1.5px solid #ef4444;
+  border-radius: 50px;
+  background: transparent;
+  color: #ef4444;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.file-remove-btn:hover {
+  background: #fef2f2;
+}
+
+/* ── Consent Sections ────────────────────────────────────── */
+.consent-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.consent-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 50px;
+}
+
+.required-badge {
+  background: #fef2f2;
+  color: var(--crex-error);
+  border: 1.5px solid #fecaca;
+}
+
+.optional-badge {
+  background: #f0fdf4;
+  color: var(--crex-success);
+  border: 1.5px solid #bbf7d0;
+}
+
+.consent-block {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px 20px;
+  background: #f8fafc;
+  border-radius: var(--crex-radius-sm);
+  border: 1px solid var(--crex-border);
+}
+
+/* ── Signature Field ─────────────────────────────────────── */
+.signature-input {
+  font-style: italic;
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+/* ── Official Use Box ────────────────────────────────────── */
+.official-use-box {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border-radius: var(--crex-radius);
+  padding: 22px 26px;
+  border-left: 3px solid var(--crex-gold);
+}
+
+.official-use-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(201, 151, 58, 0.9);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.official-use-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.official-use-field {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.official-field-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+  min-width: 110px;
+}
+
+.official-field-line {
+  flex: 1;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.25);
+  height: 18px;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .register-page {
+    padding: 20px 12px 60px;
+  }
+
+  .language-checkbox-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cv-specs-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .register-card {
+    border-radius: 16px;
+  }
+
+  .register-progress-section {
+    padding: 20px 20px 0;
+  }
+
+  .register-form-body {
+    padding: 20px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .form-grid .col-full {
+    grid-column: 1;
+  }
+
+  .register-form-actions {
+    padding: 20px;
+    gap: 12px;
+  }
+
+  .btn-crex-back,
+  .btn-crex-next {
+    padding: 11px 20px;
+    font-size: 13px;
+  }
+
+  .register-alert {
+    margin: 0 20px 12px;
+  }
+
+  .step-dots {
+    gap: 7px;
+  }
+
+  .step-dot {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+}
+
+/* ── Spinner for submission button ── */
+.crex-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  border-top-color: #1a1a2e;
+  border-radius: 50%;
+  animation: crex-spin 0.75s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+@keyframes crex-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Footer note ── */
+.register-footer-note {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  margin-top: 24px;
+  max-width: 480px;
+  line-height: 1.5;
+}
+

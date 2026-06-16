@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import './App.css'
 import AboutPage from './About'
 import ContactPage from './Contact'
+import RegistrationForm from './registration/RegistrationForm'
+import AdminPage from './admin/AdminPage'
 
 const slides = [
   {
@@ -386,6 +388,15 @@ const featuredReport = {
 
 
 
+/* ── URL-path → page name mapping ─────────────────────── */
+const pathToPage = (path) => {
+  if (path === '/admin' || path === '/dashboard') return 'admin'
+  if (path === '/register') return 'register'
+  if (path === '/about')    return 'about'
+  if (path === '/contact')  return 'contact'
+  return 'home'
+}
+
 function App() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [activeReason, setActiveReason] = useState(0)
@@ -393,7 +404,34 @@ function App() {
   const [selectedPost, setSelectedPost] = useState(null)
   const numbersRef = useRef(null)
   const SLIDE_DURATION = 8000
-  const [currentPage, setCurrentPage] = useState('home')
+  const [adminClickCount, setAdminClickCount] = useState(0)
+
+  // ── URL-driven page state ──────────────────────────────
+  const [currentPage, setCurrentPageState] = useState(
+    () => pathToPage(window.location.pathname)
+  )
+
+  const setCurrentPage = (page) => {
+    const pathMap = {
+      home:     '/',
+      about:    '/about',
+      register: '/register',
+      contact:  '/contact',
+      admin:    '/admin',
+    }
+    const newPath = pathMap[page] || '/'
+    if (window.location.pathname !== newPath) {
+      window.history.pushState({ page }, '', newPath)
+    }
+    setCurrentPageState(page)
+  }
+
+  // Handle browser back/forward buttons
+  useEffect(() => {
+    const onPop = () => setCurrentPageState(pathToPage(window.location.pathname))
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
+  }, [])
 
   const navigateToSection = (sectionSelector) => {
     setCurrentPage('home')
@@ -411,12 +449,10 @@ function App() {
     return cleanName.split(' ').slice(0, 2).map(n => n[0]).join('').toUpperCase()
   }
 
-  // Force scroll to top on mount
+  // Scroll to top on mount (only for non-root paths)
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -463,7 +499,7 @@ function App() {
           <a href="#" className="mobile-nav-link" onClick={(e) => { e.preventDefault(); navigateToSection('.experts-section'); }}>For Experts</a>
           <a href="#" className="mobile-nav-link" onClick={(e) => { e.preventDefault(); navigateToSection('.final-cta-section'); }}>Projects & Partnerships</a>
           <a href="#" className="mobile-nav-link" onClick={(e) => { e.preventDefault(); navigateToSection('.insights-section'); }}>Publications</a>
-          <button className="btn btn-primary" style={{ marginTop: '30px', width: '100%' }} onClick={() => { setCurrentPage('contact'); setIsMenuOpen(false); window.scrollTo(0, 0); }}>Join CREX</button>
+          <button className="btn btn-primary" style={{ marginTop: '30px', width: '100%' }} onClick={() => { setCurrentPage('register'); setIsMenuOpen(false); window.scrollTo(0, 0); }}>Join CREX</button>
         </div>
       </div>
 
@@ -484,7 +520,7 @@ function App() {
           </nav>
           
           <div className="header-actions">
-            <button className="btn btn-primary desktop-btn" onClick={() => { setCurrentPage('contact'); window.scrollTo(0, 0); }}>Join CREX</button>
+            <button className="btn btn-primary desktop-btn" onClick={() => { setCurrentPage('register'); window.scrollTo(0, 0); }}>Join CREX</button>
             <button className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={() => setIsMenuOpen(true)}>
               <span></span>
               <span></span>
@@ -518,7 +554,7 @@ function App() {
             <button 
               className="btn btn-primary cta-arrow" 
               key={`btn-${currentSlide}`}
-              onClick={() => { setCurrentPage('contact'); window.scrollTo(0, 0); }}
+              onClick={() => { setCurrentPage('register'); window.scrollTo(0, 0); }}
             >
               {slides[currentSlide].cta}
             </button>
@@ -654,7 +690,7 @@ function App() {
             <p className="section-desc white-p">
               CREX brings together retired professionals, former executives, educators, researchers, engineers, public servants, and development experts whose decades of experience continue to create impact across Africa.
             </p>
-            <button className="btn btn-primary" onClick={() => { setCurrentPage('contact'); window.scrollTo(0, 0); }}>Join the CREX Network</button>
+            <button className="btn btn-primary" onClick={() => { setCurrentPage('register'); window.scrollTo(0, 0); }}>Join the CREX Network</button>
           </div>
           
           <div className="experts-slider-container">
@@ -754,7 +790,7 @@ function App() {
             CREX connects retired professionals with opportunities to mentor, advise, train, consult, and contribute to sustainable development across Ghana and Africa.
           </p>
           <div className="cta-actions">
-            <button className="btn btn-primary cta-btn-gold" onClick={() => { setCurrentPage('contact'); window.scrollTo(0, 0); }}>Register as a Retired Expert</button>
+            <button className="btn btn-primary cta-btn-gold" onClick={() => { setCurrentPage('register'); window.scrollTo(0, 0); }}>Register as a Retired Expert</button>
             <button className="btn btn-secondary cta-btn-outline" onClick={() => { setCurrentPage('contact'); window.scrollTo(0, 0); }}>Partner With CREX</button>
           </div>
         </div>
@@ -762,6 +798,10 @@ function App() {
         </>
       ) : currentPage === 'about' ? (
         <AboutPage onNavigateToContact={() => { setCurrentPage('contact'); window.scrollTo(0, 0); }} />
+      ) : currentPage === 'register' ? (
+        <RegistrationForm onNavigateHome={() => { setCurrentPage('home'); window.scrollTo(0, 0); }} />
+      ) : currentPage === 'admin' ? (
+        <AdminPage />
       ) : (
         <ContactPage />
       )}
@@ -840,7 +880,22 @@ function App() {
           </div>
 
           <div className="footer-bottom">
-            <p className="copyright">© 2026 Centre for Retired Experts (CREX). All Rights Reserved.</p>
+            <p
+              className="copyright"
+              onClick={() => {
+                const next = adminClickCount + 1
+                setAdminClickCount(next)
+                if (next >= 5) {
+                  setAdminClickCount(0)
+                  setCurrentPage('admin')
+                  window.scrollTo(0, 0)
+                }
+              }}
+              style={{ cursor: 'default', userSelect: 'none' }}
+              title=""
+            >
+              © 2026 Centre for Retired Experts (CREX). All Rights Reserved.
+            </p>
             <div className="footer-bottom-links">
               <a href="#">Privacy Policy</a>
               <a href="#">Terms & Conditions</a>
