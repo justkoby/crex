@@ -96,13 +96,46 @@ const SuccessScreen = ({ onGoHome }) => (
 
 /* ── Main RegistrationForm Component ─────────────────── */
 const RegistrationForm = ({ onNavigateHome }) => {
-  const [currentStep, setCurrentStep] = useState(1)
-  const [formData,    setFormData]    = useState(INITIAL_FORM_DATA)
+  const [currentStep, setCurrentStep] = useState(() => {
+    const saved = localStorage.getItem('crex_registration_current_step')
+    if (saved) {
+      const parsed = parseInt(saved, 10)
+      if (parsed >= 1 && parsed <= TOTAL_STEPS) return parsed
+    }
+    return 1
+  })
+
+  const [formData, setFormData] = useState(() => {
+    const saved = localStorage.getItem('crex_registration_form_data')
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved)
+        // Ensure cvFile is null, as File objects cannot be serialized to JSON
+        return { ...INITIAL_FORM_DATA, ...parsed, cvFile: null }
+      } catch (e) {
+        return INITIAL_FORM_DATA
+      }
+    }
+    return INITIAL_FORM_DATA
+  })
+
   const [errors,      setErrors]      = useState({})
   const [submitted,   setSubmitted]   = useState(false)
   const [alertMsg,    setAlertMsg]    = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const cardRef = useRef(null)
+
+  // Persist current step to localStorage
+  useEffect(() => {
+    localStorage.setItem('crex_registration_current_step', currentStep.toString())
+  }, [currentStep])
+
+  // Persist form data (excluding cvFile) to localStorage
+  useEffect(() => {
+    const dataToSave = { ...formData }
+    delete dataToSave.cvFile // File objects can't be saved in localStorage
+    localStorage.setItem('crex_registration_form_data', JSON.stringify(dataToSave))
+  }, [formData])
 
   /* Scroll to top of card whenever the step changes */
   useEffect(() => {
@@ -220,6 +253,10 @@ const RegistrationForm = ({ onNavigateHome }) => {
       if (dbError) {
         throw dbError
       }
+
+      // Clear local storage drafts on successful submission
+      localStorage.removeItem('crex_registration_form_data')
+      localStorage.removeItem('crex_registration_current_step')
 
       setSubmitted(true)
     } catch (err) {
