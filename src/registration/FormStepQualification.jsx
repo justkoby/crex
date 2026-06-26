@@ -1,12 +1,16 @@
 /* ─────────────────────────────────────────────────────────
-   Step 3 – Qualifications & Experience
-───────────────────────────────────────────────────────── */
+   Step 2 – Expertise & Professional Background
+   Redesigned for Retired Experts Membership Portal
+   ───────────────────────────────────────────────────────── */
 import React from 'react'
+import { FormField, TextInput, SelectInput, Textarea } from './formUtils'
 import {
-  FormField, TextInput, SelectInput, Textarea,
-  SkillsTagInput, LanguageCheckboxGrid,
-} from './formUtils'
-import { EDUCATION_LEVELS, WORK_YEARS, LANGUAGES } from './formConstants'
+  INDUSTRIES,
+  EDUCATION_LEVELS,
+  WORK_YEARS,
+  LANGUAGES,
+  COMMON_SKILLS,
+} from './formConstants'
 
 const ALL_LANGUAGES = [...LANGUAGES, 'Other']
 
@@ -23,18 +27,57 @@ const FormStepQualification = ({ data, onChange, errors }) => {
     )
   }
 
+  const toggleSkill = (skill) => {
+    const current = data.keySkills || []
+    onChange('keySkills',
+      current.includes(skill)
+        ? current.filter(s => s !== skill)
+        : [...current, skill]
+    )
+  }
+
   return (
     <div className="form-grid">
+      {/* Section Divider */}
+      <div className="form-section-label col-full">Expertise & Professional Background</div>
 
-      {/* Highest Level of Education */}
-      <FormField label="Highest Level of Education" htmlFor="educationLevel" required error={errors.educationLevel}>
+      {/* Job Title / Role */}
+      <FormField
+        label="Job Title / Role (Pre-retirement)"
+        htmlFor="jobTitle"
+        required
+        error={errors.jobTitle}
+        helper="What was your main role or profession before retirement?"
+      >
+        <TextInput
+          id="jobTitle"
+          placeholder="e.g. Senior Lecturer, Finance Director"
+          value={data.jobTitle}
+          onChange={v => onChange('jobTitle', v)}
+          error={errors.jobTitle}
+          valid={!errors.jobTitle && !!data.jobTitle}
+        />
+      </FormField>
+
+      {/* Former Place of Work */}
+      <FormField label="Former Place of Work" htmlFor="formerWork">
+        <TextInput
+          id="formerWork"
+          placeholder="e.g. Ghana Education Service, Barclays Bank"
+          value={data.formerWork}
+          onChange={v => onChange('formerWork', v)}
+        />
+      </FormField>
+
+      {/* Industry */}
+      <FormField label="Industry" htmlFor="industry" required error={errors.industry}>
         <SelectInput
-          id="educationLevel"
-          placeholder="Select education level"
-          options={EDUCATION_LEVELS}
-          value={data.educationLevel}
-          onChange={v => onChange('educationLevel', v)}
-          error={errors.educationLevel}
+          id="industry"
+          placeholder="Select Industry"
+          options={INDUSTRIES}
+          value={data.industry}
+          onChange={v => onChange('industry', v)}
+          error={errors.industry}
         />
       </FormField>
 
@@ -50,9 +93,21 @@ const FormStepQualification = ({ data, onChange, errors }) => {
         />
       </FormField>
 
+      {/* Highest Level of Education */}
+      <FormField label="Highest Level of Education" htmlFor="educationLevel" required error={errors.educationLevel}>
+        <SelectInput
+          id="educationLevel"
+          placeholder="Select education level"
+          options={EDUCATION_LEVELS}
+          value={data.educationLevel}
+          onChange={v => onChange('educationLevel', v)}
+          error={errors.educationLevel}
+        />
+      </FormField>
+
       {/* Other Education – conditional */}
       {showOtherEducation && (
-        <FormField label="Specify Your Qualification" htmlFor="otherEducation" fullWidth>
+        <FormField label="Specify Your Qualification" htmlFor="otherEducation">
           <TextInput
             id="otherEducation"
             placeholder="Please specify your qualification"
@@ -68,12 +123,12 @@ const FormStepQualification = ({ data, onChange, errors }) => {
         htmlFor="institutions"
         required
         error={errors.institutions}
-        helper="Add school name(s) and years completed, one per line"
+        helper="Add school/institution name(s) and years completed, one per line"
         fullWidth
       >
         <Textarea
           id="institutions"
-          placeholder={"e.g. University of Ghana – BA Economics (2002)\nKNUST – MBA Finance (2006)"}
+          placeholder={"e.g. University of Ghana – BA Economics (1985)\nKNUST – MSc Civil Engineering (1990)"}
           value={data.institutions}
           onChange={v => onChange('institutions', v)}
           error={errors.institutions}
@@ -81,27 +136,33 @@ const FormStepQualification = ({ data, onChange, errors }) => {
         />
       </FormField>
 
-      {/* Key Skills – tag input, full width */}
+      {/* Key Skills – checkbox grid, full width */}
       <FormField
         label="Key Skills"
         required
         error={errors.keySkills}
+        helper="Select at least 3 skills that represent your core expertise."
         fullWidth
       >
-        <SkillsTagInput
-          skills={data.keySkills || []}
-          onChange={val => onChange('keySkills', val)}
-          error={errors.keySkills}
-        />
-        {errors.keySkills && (
-          <span className="crex-error-text" style={{ display: 'block', marginTop: '4px' }}>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
-            </svg>
-            {errors.keySkills}
-          </span>
-        )}
+        <div className="language-checkbox-grid">
+          {COMMON_SKILLS.map(skill => (
+            <label key={skill} className="language-checkbox-item">
+              <input
+                type="checkbox"
+                className="lang-checkbox-input"
+                id={`skill-${skill}`}
+                checked={(data.keySkills || []).includes(skill)}
+                onChange={() => toggleSkill(skill)}
+              />
+              <span className="lang-checkbox-custom">
+                <svg className="lang-check-icon" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <polyline points="1,6 4.5,9.5 11,2" />
+                </svg>
+              </span>
+              <span className="lang-label">{skill}</span>
+            </label>
+          ))}
+        </div>
       </FormField>
 
       {/* Languages Spoken – checkbox grid, full width */}
@@ -111,11 +172,25 @@ const FormStepQualification = ({ data, onChange, errors }) => {
         error={errors.languages}
         fullWidth
       >
-        <LanguageCheckboxGrid
-          options={ALL_LANGUAGES}
-          selected={data.languages || []}
-          onToggle={toggleLanguage}
-        />
+        <div className="language-checkbox-grid">
+          {ALL_LANGUAGES.map(lang => (
+            <label key={lang} className="language-checkbox-item">
+              <input
+                type="checkbox"
+                className="lang-checkbox-input"
+                id={`lang-${lang}`}
+                checked={(data.languages || []).includes(lang)}
+                onChange={() => toggleLanguage(lang)}
+              />
+              <span className="lang-checkbox-custom">
+                <svg className="lang-check-icon" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <polyline points="1,6 4.5,9.5 11,2" />
+                </svg>
+              </span>
+              <span className="lang-label">{lang}</span>
+            </label>
+          ))}
+        </div>
       </FormField>
 
       {/* Other Language – conditional */}
@@ -139,13 +214,12 @@ const FormStepQualification = ({ data, onChange, errors }) => {
       >
         <Textarea
           id="certifications"
-          placeholder="e.g. ACCA (2010), Project Management Professional – PMP (2015)"
+          placeholder="e.g. Chartered Accountant – ICA Ghana (1988), PMP (2005)"
           value={data.certifications}
           onChange={v => onChange('certifications', v)}
           rows={2}
         />
       </FormField>
-
     </div>
   )
 }

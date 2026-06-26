@@ -59,7 +59,7 @@ const StatusBadge = ({ status }) => {
 
 /* ── Main Dashboard ─────────────────────────────────────── */
 const AdminDashboard = ({ session, onLogout }) => {
-  const [applicants, setApplicants]   = useState([])
+  const [members, setMembers]         = useState([])
   const [loading, setLoading]         = useState(true)
   const [error, setError]             = useState('')
 
@@ -75,9 +75,7 @@ const AdminDashboard = ({ session, onLogout }) => {
 
   // Filters
   const [search, setSearch]           = useState('')
-  const [filterIndustry, setFilterIndustry] = useState('')
-  const [filterEducation, setFilterEducation] = useState('')
-  const [filterLocation, setFilterLocation]   = useState('')
+  const [filterCity, setFilterCity]   = useState('')
   const [filterStatus, setFilterStatus]       = useState('')
 
   // Expanded notes
@@ -94,58 +92,54 @@ const AdminDashboard = ({ session, onLogout }) => {
   // Expanded candidate row
   const [expandedRow, setExpandedRow] = useState(null)
 
-  /* ── Fetch all applicants ─────────────────────────────── */
-  const fetchApplicants = useCallback(async () => {
+  /* ── Fetch all members ───────────────────────────────── */
+  const fetchMembers = useCallback(async () => {
     setLoading(true)
     setError('')
     try {
       const { data, error: fetchError } = await supabase
-        .from('applicants')
+        .from('members')
         .select('*')
         .order('created_at', { ascending: false })
 
       if (fetchError) throw fetchError
-      setApplicants(data || [])
+      setMembers(data || [])
 
       // Pre-fill note values
       const notes = {}
-      data?.forEach(a => { notes[a.id] = a.admin_notes || '' })
+      data?.forEach(m => { notes[m.id] = m.admin_notes || '' })
       setNoteValues(notes)
     } catch (err) {
-      setError(err.message || 'Failed to load candidates.')
+      setError(err.message || 'Failed to load members.')
     } finally {
       setLoading(false)
     }
   }, [])
 
-  useEffect(() => { fetchApplicants() }, [fetchApplicants])
+  useEffect(() => { fetchMembers() }, [fetchMembers])
 
   /* ── Stats ────────────────────────────────────────────── */
   const today = new Date().toISOString().split('T')[0]
-  const totalCount       = applicants.length
-  const newTodayCount    = applicants.filter(a =>
-    a.created_at?.startsWith(today)).length
-  const shortlistedCount = applicants.filter(a => a.status === 'SHORTLISTED').length
-  const placedCount      = applicants.filter(a => a.status === 'PLACED').length
+  const totalCount       = members.length
+  const newTodayCount    = members.filter(m =>
+    m.created_at?.startsWith(today)).length
+  const shortlistedCount = members.filter(m => m.status === 'SHORTLISTED').length
+  const placedCount      = members.filter(m => m.status === 'PLACED').length
 
   /* ── Filter options ───────────────────────────────────── */
-  const industries  = [...new Set(applicants.map(a => a.industry).filter(Boolean))].sort()
-  const educations  = [...new Set(applicants.map(a => a.highest_education).filter(Boolean))].sort()
-  const locations   = [...new Set(applicants.map(a => a.preferred_location).filter(Boolean))].sort()
+  const cities = [...new Set(members.map(m => m.town_city).filter(Boolean))].sort()
 
   /* ── Filtered list ────────────────────────────────────── */
-  const filtered = applicants.filter(a => {
+  const filtered = members.filter(m => {
     const q = search.toLowerCase()
     const matchSearch = !q || (
-      a.full_name?.toLowerCase().includes(q) ||
-      a.phone?.toLowerCase().includes(q) ||
-      a.email?.toLowerCase().includes(q)
+      m.full_name?.toLowerCase().includes(q) ||
+      m.regular_phone?.toLowerCase().includes(q) ||
+      m.email?.toLowerCase().includes(q)
     )
-    const matchIndustry  = !filterIndustry  || a.industry === filterIndustry
-    const matchEducation = !filterEducation || a.highest_education === filterEducation
-    const matchLocation  = !filterLocation  || a.preferred_location === filterLocation
-    const matchStatus    = !filterStatus    || (a.status || 'NEW') === filterStatus
-    return matchSearch && matchIndustry && matchEducation && matchLocation && matchStatus
+    const matchCity   = !filterCity || m.town_city === filterCity
+    const matchStatus = !filterStatus || (m.status || 'NEW') === filterStatus
+    return matchSearch && matchCity && matchStatus
   })
 
   /* ── Update status ────────────────────────────────────── */
@@ -153,12 +147,12 @@ const AdminDashboard = ({ session, onLogout }) => {
     setStatusLoading(prev => ({ ...prev, [id]: true }))
     try {
       const { error: updateError } = await supabase
-        .from('applicants')
+        .from('members')
         .update({ status: newStatus })
         .eq('id', id)
       if (updateError) throw updateError
-      setApplicants(prev =>
-        prev.map(a => a.id === id ? { ...a, status: newStatus } : a)
+      setMembers(prev =>
+        prev.map(m => m.id === id ? { ...m, status: newStatus } : m)
       )
     } catch (err) {
       alert('Failed to update status: ' + err.message)
@@ -172,12 +166,12 @@ const AdminDashboard = ({ session, onLogout }) => {
     setSavingNote(prev => ({ ...prev, [id]: true }))
     try {
       const { error: noteError } = await supabase
-        .from('applicants')
+        .from('members')
         .update({ admin_notes: noteValues[id] })
         .eq('id', id)
       if (noteError) throw noteError
-      setApplicants(prev =>
-        prev.map(a => a.id === id ? { ...a, admin_notes: noteValues[id] } : a)
+      setMembers(prev =>
+        prev.map(m => m.id === id ? { ...m, admin_notes: noteValues[id] } : m)
       )
       setExpandedNotes(prev => ({ ...prev, [id]: false }))
     } catch (err) {
@@ -188,11 +182,11 @@ const AdminDashboard = ({ session, onLogout }) => {
   }
 
   /* ── Download CV ──────────────────────────────────────── */
-  const handleCvDownload = async (applicant) => {
-    if (!applicant.cv_file_path) return
-    setCvLoading(prev => ({ ...prev, [applicant.id]: true }))
+  const handleCvDownload = async (member) => {
+    if (!member.cv_file_path) return
+    setCvLoading(prev => ({ ...prev, [member.id]: true }))
     try {
-      const url = await getCvUrl(applicant.cv_file_path)
+      const url = await getCvUrl(member.cv_file_path)
       if (url) {
         const link = document.createElement('a')
         link.href = url
@@ -203,38 +197,35 @@ const AdminDashboard = ({ session, onLogout }) => {
         alert('Could not generate download link. Please try again.')
       }
     } finally {
-      setCvLoading(prev => ({ ...prev, [applicant.id]: false }))
+      setCvLoading(prev => ({ ...prev, [member.id]: false }))
     }
   }
 
   /* ── Export CSV ───────────────────────────────────────── */
   const handleExportCSV = () => {
     const headers = [
-      'CREX ID', 'Full Name', 'Phone', 'Email', 'Industry',
-      'Education', 'Experience', 'Location', 'Status',
-      'Former Work', 'Job Title', 'Employment Type',
-      'Key Skills', 'Languages', 'Has CV', 'Admin Notes',
-      'Registered Date'
+      'Member ID', 'Full Name', 'Phone', 'Email', 'City/Town',
+      'Region', 'Nationality', 'Job Title', 'Key Skills',
+      'Languages', 'Certifications', 'Has CV', 'Status',
+      'Admin Notes', 'Registered Date'
     ]
 
-    const rows = filtered.map(a => [
-      generateCrexId(a.id),
-      a.full_name || '',
-      a.phone || '',
-      a.email || '',
-      a.industry || '',
-      a.highest_education || '',
-      a.years_experience || '',
-      a.preferred_location || '',
-      a.status || 'NEW',
-      a.former_place_of_work || '',
-      a.job_title_role || '',
-      a.employment_type || '',
-      (a.key_skills || []).join('; '),
-      (a.languages_spoken || []).join('; '),
-      a.has_cv ? 'Yes' : 'No',
-      a.admin_notes || '',
-      a.created_at ? new Date(a.created_at).toLocaleDateString() : '',
+    const rows = filtered.map(m => [
+      generateCrexId(m.id),
+      m.full_name || '',
+      m.regular_phone || '',
+      m.email || '',
+      m.town_city || '',
+      m.region || '',
+      m.nationality || '',
+      m.title || '',
+      (m.key_skills || []).join('; '),
+      (m.languages_spoken || []).join('; '),
+      m.professional_certifications || '',
+      m.has_cv ? 'Yes' : 'No',
+      m.status || 'NEW',
+      m.admin_notes || '',
+      m.created_at ? new Date(m.created_at).toLocaleDateString() : '',
     ])
 
     const csv = [headers, ...rows]
@@ -245,7 +236,7 @@ const AdminDashboard = ({ session, onLogout }) => {
     const url  = URL.createObjectURL(blob)
     const link = document.createElement('a')
     link.href     = url
-    link.download = `CREX-Candidates-${today}.csv`
+    link.download = `CREX-Members-${today}.csv`
     link.click()
     URL.revokeObjectURL(url)
   }
@@ -259,13 +250,11 @@ const AdminDashboard = ({ session, onLogout }) => {
   /* ── Clear filters ────────────────────────────────────── */
   const clearFilters = () => {
     setSearch('')
-    setFilterIndustry('')
-    setFilterEducation('')
-    setFilterLocation('')
+    setFilterCity('')
     setFilterStatus('')
   }
 
-  const hasActiveFilters = search || filterIndustry || filterEducation || filterLocation || filterStatus
+  const hasActiveFilters = search || filterCity || filterStatus
 
   /* ── Render ───────────────────────────────────────────── */
   return (
@@ -277,7 +266,7 @@ const AdminDashboard = ({ session, onLogout }) => {
           <div className="dash-brand-box">CREX</div>
           <div className="dash-header-titles">
             <span className="dash-header-title">Admin Dashboard</span>
-            <span className="dash-header-sub">Candidate Management</span>
+            <span className="dash-header-sub">Member Management</span>
           </div>
         </div>
         <div className="dash-header-right">
@@ -332,11 +321,11 @@ const AdminDashboard = ({ session, onLogout }) => {
         {/* ── Page Title ──────────────────────────────────── */}
         <div className="dash-page-header">
           <div>
-            <h1 className="dash-page-title">Candidate Database</h1>
-            <p className="dash-page-desc">View, manage, and track all registered CREX candidates</p>
+            <h1 className="dash-page-title">CREX Membership Dashboard</h1>
+            <p className="dash-page-desc">View, manage, and track all registered CREX members</p>
           </div>
           <div className="dash-page-actions">
-            <button className="dash-refresh-btn" onClick={fetchApplicants} title="Refresh data">
+            <button className="dash-refresh-btn" onClick={fetchMembers} title="Refresh data">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polyline points="23 4 23 10 17 10"/>
                 <polyline points="1 20 1 14 7 14"/>
@@ -359,13 +348,13 @@ const AdminDashboard = ({ session, onLogout }) => {
         <div className="stats-grid">
           <StatCard
             icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>}
-            label="Total Candidates"
+            label="Total Members"
             value={totalCount}
             color="#d3a052"
           />
           <StatCard
             icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>}
-            label="New Today"
+            label="New Members"
             value={newTodayCount}
             sub={today}
             color="#3b82f6"
@@ -392,7 +381,7 @@ const AdminDashboard = ({ session, onLogout }) => {
               <line x1="12" y1="16" x2="12.01" y2="16"/>
             </svg>
             {error}
-            <button onClick={fetchApplicants} className="dash-retry-btn">Retry</button>
+            <button onClick={fetchMembers} className="dash-retry-btn">Retry</button>
           </div>
         )}
 
@@ -429,33 +418,13 @@ const AdminDashboard = ({ session, onLogout }) => {
             </select>
 
             <select
-              value={filterIndustry}
-              onChange={e => setFilterIndustry(e.target.value)}
+              value={filterCity}
+              onChange={e => setFilterCity(e.target.value)}
               className="dash-filter-select"
-              id="filter-industry"
+              id="filter-city"
             >
-              <option value="">All Industries</option>
-              {industries.map(i => <option key={i} value={i}>{i}</option>)}
-            </select>
-
-            <select
-              value={filterEducation}
-              onChange={e => setFilterEducation(e.target.value)}
-              className="dash-filter-select"
-              id="filter-education"
-            >
-              <option value="">All Education</option>
-              {educations.map(e => <option key={e} value={e}>{e}</option>)}
-            </select>
-
-            <select
-              value={filterLocation}
-              onChange={e => setFilterLocation(e.target.value)}
-              className="dash-filter-select"
-              id="filter-location"
-            >
-              <option value="">All Locations</option>
-              {locations.map(l => <option key={l} value={l}>{l}</option>)}
+              <option value="">All Cities</option>
+              {cities.map(c => <option key={c} value={c}>{c}</option>)}
             </select>
 
             {hasActiveFilters && (
@@ -469,7 +438,7 @@ const AdminDashboard = ({ session, onLogout }) => {
         {/* ── Results count ────────────────────────────────── */}
         <div className="dash-results-row">
           <span className="dash-results-count">
-            {loading ? 'Loading…' : `${filtered.length} candidate${filtered.length !== 1 ? 's' : ''}`}
+            {loading ? 'Loading…' : `${filtered.length} member${filtered.length !== 1 ? 's' : ''}`}
             {hasActiveFilters && ` (filtered from ${totalCount})`}
           </span>
         </div>
@@ -478,12 +447,12 @@ const AdminDashboard = ({ session, onLogout }) => {
         {loading ? (
           <div className="dash-loading-state">
             <div className="dash-loading-spinner" />
-            <p>Loading candidates from Supabase…</p>
+            <p>Loading members from Supabase…</p>
           </div>
         ) : filtered.length === 0 ? (
           <div className="dash-empty-state">
             <div className="dash-empty-icon">📋</div>
-            <h3>No candidates found</h3>
+            <h3>No members found</h3>
             <p>{hasActiveFilters ? 'Try adjusting your filters.' : 'No registrations yet.'}</p>
             {hasActiveFilters && (
               <button className="clear-filters-btn" onClick={clearFilters}>Clear Filters</button>
@@ -495,12 +464,12 @@ const AdminDashboard = ({ session, onLogout }) => {
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>CREX ID</th>
+                  <th>Member ID</th>
                   <th>Name</th>
                   <th>Phone</th>
-                  <th>Industry</th>
-                  <th>Education</th>
-                  <th>Location</th>
+                  <th>City/Town</th>
+                  <th>Region</th>
+                  <th>Nationality</th>
                   <th>CV</th>
                   <th>Status</th>
                   <th>Notes</th>
@@ -508,17 +477,17 @@ const AdminDashboard = ({ session, onLogout }) => {
                 </tr>
               </thead>
               <tbody>
-                {filtered.map((a, idx) => {
-                  const crexId  = generateCrexId(a.id)
-                  const status  = a.status || 'NEW'
-                  const hasNote = a.admin_notes && a.admin_notes.trim()
-                  const isExpanded = expandedRow === a.id
+                {filtered.map((m, idx) => {
+                  const crexId  = generateCrexId(m.id)
+                  const status  = m.status || 'NEW'
+                  const hasNote = m.admin_notes && m.admin_notes.trim()
+                  const isExpanded = expandedRow === m.id
 
                   return (
-                    <React.Fragment key={a.id}>
+                    <React.Fragment key={m.id}>
                       <tr
                         className={`dash-table-row ${isExpanded ? 'row-expanded' : ''}`}
-                        onClick={() => setExpandedRow(isExpanded ? null : a.id)}
+                        onClick={() => setExpandedRow(isExpanded ? null : m.id)}
                       >
                         <td className="td-num">{idx + 1}</td>
                         <td>
@@ -526,30 +495,30 @@ const AdminDashboard = ({ session, onLogout }) => {
                         </td>
                         <td className="td-name">
                           <div className="candidate-avatar">
-                            {(a.full_name || '?').split(' ').slice(0, 2).map(n => n[0]).join('').toUpperCase()}
+                            {(m.full_name || '?').split(' ').slice(0, 2).map(n => n[0]).join('').toUpperCase()}
                           </div>
                           <div className="candidate-name-wrap">
-                            <span className="candidate-name">{a.full_name || '—'}</span>
-                            <span className="candidate-email">{a.email || ''}</span>
+                            <span className="candidate-name">{m.full_name || '—'}</span>
+                            <span className="candidate-email">{m.email || ''}</span>
                           </div>
                         </td>
-                        <td className="td-phone">{a.phone || '—'}</td>
+                        <td className="td-phone">{m.regular_phone || '—'}</td>
                         <td>
-                          {a.industry
-                            ? <span className="industry-tag">{a.industry}</span>
+                          {m.town_city
+                            ? <span className="industry-tag">{m.town_city}</span>
                             : <span className="td-empty">—</span>}
                         </td>
-                        <td className="td-edu">{a.highest_education || '—'}</td>
-                        <td className="td-loc">{a.preferred_location || '—'}</td>
+                        <td className="td-edu">{m.region || '—'}</td>
+                        <td className="td-loc">{m.nationality || '—'}</td>
                         <td onClick={e => e.stopPropagation()}>
-                          {a.has_cv && a.cv_file_path ? (
+                          {m.has_cv && m.cv_file_path ? (
                             <button
                               className="cv-download-btn"
-                              onClick={() => handleCvDownload(a)}
-                              disabled={cvLoading[a.id]}
+                              onClick={() => handleCvDownload(m)}
+                              disabled={cvLoading[m.id]}
                               title="Download CV"
                             >
-                              {cvLoading[a.id] ? (
+                              {cvLoading[m.id] ? (
                                 <span className="btn-spinner" />
                               ) : (
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -570,23 +539,23 @@ const AdminDashboard = ({ session, onLogout }) => {
                             <select
                               className="status-select"
                               value={status}
-                              onChange={e => handleStatusChange(a.id, e.target.value)}
-                              disabled={statusLoading[a.id]}
+                              onChange={e => handleStatusChange(m.id, e.target.value)}
+                              disabled={statusLoading[m.id]}
                               title="Change status"
-                              id={`status-${a.id}`}
+                              id={`status-${m.id}`}
                             >
                               {STATUS_PIPELINE.map(s => (
                                 <option key={s} value={s}>{s}</option>
                               ))}
                             </select>
-                            {statusLoading[a.id] && <span className="btn-spinner" />}
+                            {statusLoading[m.id] && <span className="btn-spinner" />}
                           </div>
                         </td>
                         <td onClick={e => e.stopPropagation()}>
                           <button
                             className={`notes-btn ${hasNote ? 'has-note' : ''}`}
                             onClick={() =>
-                              setExpandedNotes(prev => ({ ...prev, [a.id]: !prev[a.id] }))
+                              setExpandedNotes(prev => ({ ...prev, [m.id]: !prev[m.id] }))
                             }
                             title={hasNote ? 'View/Edit note' : 'Add note'}
                           >
@@ -601,8 +570,8 @@ const AdminDashboard = ({ session, onLogout }) => {
                           </button>
                         </td>
                         <td className="td-date">
-                          {a.created_at
-                            ? new Date(a.created_at).toLocaleDateString('en-GB', {
+                          {m.created_at
+                            ? new Date(m.created_at).toLocaleDateString('en-GB', {
                                 day: '2-digit', month: 'short', year: 'numeric'
                               })
                             : '—'}
@@ -620,80 +589,54 @@ const AdminDashboard = ({ session, onLogout }) => {
                                   <div className="detail-fields">
                                     <div className="detail-field">
                                       <span className="df-label">Gender</span>
-                                      <span className="df-value">{a.gender || '—'}</span>
+                                      <span className="df-value">{m.gender || '—'}</span>
                                     </div>
                                     <div className="detail-field">
-                                      <span className="df-label">City</span>
-                                      <span className="df-value">{a.city || '—'}</span>
+                                      <span className="df-label">City / Town</span>
+                                      <span className="df-value">{m.town_city || '—'}</span>
                                     </div>
                                     <div className="detail-field">
                                       <span className="df-label">Region</span>
-                                      <span className="df-value">{a.region || '—'}</span>
+                                      <span className="df-value">{m.region || '—'}</span>
                                     </div>
                                     <div className="detail-field">
                                       <span className="df-label">Nationality</span>
-                                      <span className="df-value">{a.nationality || '—'}</span>
+                                      <span className="df-value">{m.nationality || '—'}</span>
+                                    </div>
+                                    <div className="detail-field">
+                                      <span className="df-label">Date of Birth</span>
+                                      <span className="df-value">{m.date_of_birth || '—'}</span>
                                     </div>
                                   </div>
                                 </div>
 
                                 <div className="detail-section">
-                                  <h4>Employment</h4>
+                                  <h4>Role & Skills</h4>
                                   <div className="detail-fields">
-                                    <div className="detail-field">
-                                      <span className="df-label">Former Work</span>
-                                      <span className="df-value">{a.former_place_of_work || '—'}</span>
-                                    </div>
                                     <div className="detail-field">
                                       <span className="df-label">Job Title</span>
-                                      <span className="df-value">{a.job_title_role || '—'}</span>
-                                    </div>
-                                    <div className="detail-field">
-                                      <span className="df-label">Type</span>
-                                      <span className="df-value">{a.employment_type || '—'}</span>
-                                    </div>
-                                    <div className="detail-field">
-                                      <span className="df-label">Available</span>
-                                      <span className="df-value">{a.available_start_time || '—'}</span>
-                                    </div>
-                                    <div className="detail-field">
-                                      <span className="df-label">Relocate?</span>
-                                      <span className="df-value">{a.willing_to_relocate || '—'}</span>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div className="detail-section">
-                                  <h4>Qualifications</h4>
-                                  <div className="detail-fields">
-                                    <div className="detail-field">
-                                      <span className="df-label">Experience</span>
-                                      <span className="df-value">{a.years_experience || '—'}</span>
-                                    </div>
-                                    <div className="detail-field">
-                                      <span className="df-label">Institutions</span>
-                                      <span className="df-value">{a.institutions_attended || '—'}</span>
+                                      <span className="df-value">{m.title || '—'}</span>
                                     </div>
                                     <div className="detail-field full-width">
                                       <span className="df-label">Key Skills</span>
                                       <div className="df-tags">
-                                        {(a.key_skills || []).length > 0
-                                          ? a.key_skills.map((s, i) => <span key={i} className="df-tag">{s}</span>)
+                                        {(m.key_skills || []).length > 0
+                                          ? m.key_skills.map((s, i) => <span key={i} className="df-tag">{s}</span>)
                                           : <span className="df-value">—</span>}
                                       </div>
                                     </div>
                                     <div className="detail-field full-width">
-                                      <span className="df-label">Languages</span>
+                                      <span className="df-label">Languages Spoken</span>
                                       <div className="df-tags">
-                                        {(a.languages_spoken || []).length > 0
-                                          ? a.languages_spoken.map((l, i) => <span key={i} className="df-tag">{l}</span>)
+                                        {(m.languages_spoken || []).length > 0
+                                          ? m.languages_spoken.map((l, i) => <span key={i} className="df-tag">{l}</span>)
                                           : <span className="df-value">—</span>}
                                       </div>
                                     </div>
-                                    {a.certifications && (
+                                    {m.professional_certifications && (
                                       <div className="detail-field full-width">
                                         <span className="df-label">Certifications</span>
-                                        <span className="df-value">{a.certifications}</span>
+                                        <span className="df-value">{m.professional_certifications}</span>
                                       </div>
                                     )}
                                   </div>
@@ -701,33 +644,33 @@ const AdminDashboard = ({ session, onLogout }) => {
                               </div>
 
                               {/* ── Notes editor ─────────────────── */}
-                              {expandedNotes[a.id] && (
+                              {expandedNotes[m.id] && (
                                 <div className="notes-editor-wrap">
                                   <label className="notes-label">
-                                    Admin Notes for {a.full_name}
+                                    Admin Notes for {m.full_name}
                                   </label>
                                   <textarea
                                     className="notes-textarea"
-                                    value={noteValues[a.id] || ''}
+                                    value={noteValues[m.id] || ''}
                                     onChange={e =>
-                                      setNoteValues(prev => ({ ...prev, [a.id]: e.target.value }))
+                                      setNoteValues(prev => ({ ...prev, [m.id]: e.target.value }))
                                     }
-                                    placeholder="Add internal notes about this candidate…"
+                                    placeholder="Add internal notes about this member…"
                                     rows={4}
                                   />
                                   <div className="notes-actions">
                                     <button
                                       className="notes-save-btn"
-                                      onClick={() => handleSaveNote(a.id)}
-                                      disabled={savingNote[a.id]}
+                                      onClick={() => handleSaveNote(m.id)}
+                                      disabled={savingNote[m.id]}
                                     >
-                                      {savingNote[a.id] ? 'Saving…' : '💾 Save Note'}
+                                      {savingNote[m.id] ? 'Saving…' : '💾 Save Note'}
                                     </button>
                                     <button
                                       className="notes-cancel-btn"
                                       onClick={() => {
-                                        setExpandedNotes(prev => ({ ...prev, [a.id]: false }))
-                                        setNoteValues(prev => ({ ...prev, [a.id]: a.admin_notes || '' }))
+                                        setExpandedNotes(prev => ({ ...prev, [m.id]: false }))
+                                        setNoteValues(prev => ({ ...prev, [m.id]: m.admin_notes || '' }))
                                       }}
                                     >
                                       Cancel
@@ -736,14 +679,14 @@ const AdminDashboard = ({ session, onLogout }) => {
                                 </div>
                               )}
 
-                              {hasNote && !expandedNotes[a.id] && (
+                              {hasNote && !expandedNotes[m.id] && (
                                 <div className="saved-note-preview">
                                   <span className="saved-note-label">📝 Note:</span>
-                                  <span className="saved-note-text">{a.admin_notes}</span>
+                                  <span className="saved-note-text">{m.admin_notes}</span>
                                   <button
                                     className="edit-note-btn"
                                     onClick={() =>
-                                      setExpandedNotes(prev => ({ ...prev, [a.id]: true }))
+                                      setExpandedNotes(prev => ({ ...prev, [m.id]: true }))
                                     }
                                   >
                                     Edit

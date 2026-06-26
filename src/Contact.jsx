@@ -79,7 +79,7 @@ export default function ContactPage() {
                   <h3>Email</h3>
                   <p>Send us a direct email at:</p>
                   <p style={{ marginTop: '10px', fontSize: '1.1rem' }}>
-                    <a href="mailto:crexghana@gmail.com">crexghana@gmail.com</a>
+                    <a href="mailto:info@crexghana.org">info@crexghana.org</a>
                   </p>
                 </div>
               </div>

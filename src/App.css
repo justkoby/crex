@@ -134,7 +134,7 @@
   flex-direction: column;
   justify-content: center;
   color: var(--white);
-  padding-bottom: 100px;
+  padding-bottom: 60px;
 }
 
 .hero-text-content {
@@ -143,26 +143,26 @@
 }
 
 .slide-headline {
-  font-size: 72px;
+  font-size: 52px;
   font-family: var(--font-heading);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   color: var(--white);
-  line-height: 1;
+  line-height: 1.15;
 }
 
 .slide-descriptor {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--warm-ivory);
-  margin-bottom: 30px;
+  margin-bottom: 16px;
   letter-spacing: 0.05em;
 }
 
 .slide-quote {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 500;
-  line-height: 1.4;
-  margin-bottom: 40px;
+  line-height: 1.45;
+  margin-bottom: 24px;
   color: rgba(255, 255, 255, 0.9);
   font-style: italic;
   border-left: 2px solid var(--gold);
@@ -1622,6 +1622,29 @@
 
 /* Responsive Headings */
 @media (max-width: 768px) {
+  .slide-headline {
+    font-size: 28px !important;
+    line-height: 1.25 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .slide-descriptor {
+    font-size: 0.8rem !important;
+    margin-bottom: 12px !important;
+  }
+
+  .slide-quote {
+    font-size: 0.95rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 18px !important;
+    padding-left: 12px !important;
+  }
+
+  .cta-arrow {
+    padding: 10px 20px !important;
+    font-size: 0.8rem !important;
+  }
+
   /* Mobile sticky navbar */
   .navbar {
     position: sticky !important;
@@ -2357,3 +2380,193 @@
     font-size: 14px !important;
   }
 }
+
+/* ──────────────────────────────────────────────
+   NEW SECTIONS & CONTENT STYLES
+────────────────────────────────────────────── */
+
+/* Rolling Ticker Wrap and Scrolling Animation */
+.rolling-ticker-section {
+  width: 100%;
+  overflow: hidden;
+}
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 12px 0;
+}
+.ticker {
+  display: inline-block;
+  white-space: nowrap;
+  animation: tickerSlide 50s linear infinite;
+}
+.ticker:hover {
+  animation-play-state: paused;
+}
+.ticker-item {
+  display: inline-block;
+  padding: 0 45px;
+  font-size: 1rem;
+  color: var(--white);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
+}
+.ticker-item strong {
+  color: var(--gold);
+}
+
+@keyframes tickerSlide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Partner Logo Scroll Bar styling */
+.partner-logo-scroll {
+  background-color: var(--white);
+  padding: 30px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  width: 100%;
+}
+.partner-logo-track {
+  display: flex;
+  width: max-content;
+  animation: logoScroll 25s linear infinite;
+  align-items: center;
+}
+.partner-logo-track:hover {
+  animation-play-state: paused;
+}
+.partner-logo-item {
+  height: 60px;
+  width: auto;
+  margin: 0 40px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+.partner-logo-item:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+@keyframes logoScroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+}
+
+/* Projects & Partnerships styling */
+.proj-part-grid {
+  margin-top: 40px;
+}
+.project-card-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06) !important;
+}
+.partner-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.partner-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06) !important;
+}
+
+/* News & Events styling */
+.news-item-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.news-item-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06) !important;
+}
+.event-list-item {
+  transition: transform 0.2s ease;
+  padding: 10px;
+  border-radius: 8px;
+}
+.event-list-item:hover {
+  background: var(--warm-ivory);
+  transform: translateX(5px);
+}
+.recent-event-card {
+  transition: all 0.3s ease;
+}
+.recent-event-card:hover {
+  border-left-color: var(--gold) !important;
+  transform: translateX(5px);
+}
+
+/* Gallery Section styling */
+.gallery-card img {
+  transition: transform 0.5s ease;
+}
+.gallery-card:hover img {
+  transform: scale(1.08);
+}
+.gallery-overlay {
+  transition: opacity 0.3s ease;
+}
+
+/* Responsive Overrides for Ticker and Grids */
+@media (max-width: 1024px) {
+  .proj-part-grid, .news-events-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .steps-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+}
+
+/* Medium Screen Adjustments to prevent Hero section overlaps */
+@media (max-width: 1200px) {
+  .slide-headline {
+    font-size: 38px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 10px !important;
+  }
+  .slide-descriptor {
+    font-size: 0.85rem !important;
+    margin-bottom: 14px !important;
+  }
+  .slide-quote {
+    font-size: 1.05rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 20px !important;
+    padding-left: 16px !important;
+  }
+  .cta-arrow {
+    padding: 12px 24px !important;
+    font-size: 0.85rem !important;
+  }
+  .hero-overlay-content {
+    padding-bottom: 60px !important;
+  }
+  .hero-nav-bottom {
+    bottom: 25px !important;
+    padding: 0 40px !important;
+    gap: 20px !important;
+  }
+  .nav-label {
+    font-size: 0.75rem !important;
+  }
+  h1 {
+    font-size: 36px !important;
+  }
+}
+

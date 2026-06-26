@@ -1,0 +1,206 @@
+/* Leadership Page Styles */
+
+.leadership-page {
+  animation: fadeIn 0.8s ease-out forwards;
+  background-color: var(--white);
+}
+
+/* Hero */
+.leadership-hero {
+  background: linear-gradient(135deg, var(--deep-wine) 0%, #3a0a18 100%);
+  padding: 120px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.leadership-hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4v-4H4v4H0v2h4v4h2v-4h4v-2H6zm30 0v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.leadership-hero-content {
+  max-width: 800px;
+  position: relative;
+  z-index: 2;
+}
+
+.leadership-hero-tag {
+  color: var(--gold);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.leadership-hero-title {
+  color: var(--white);
+  font-size: 3rem;
+  font-family: var(--font-heading);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.leadership-hero-desc {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+/* Tabs + Grid */
+.leadership-detail-section {
+  padding: 80px 0 120px;
+  background-color: var(--warm-ivory);
+}
+
+.leadership-tabs {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 50px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 0;
+}
+
+.leadership-tab {
+  padding: 14px 28px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: none;
+  border: none;
+  color: var(--charcoal);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+}
+
+.leadership-tab.active {
+  color: var(--deep-wine);
+  border-bottom-color: var(--gold);
+}
+
+.leadership-tab:hover {
+  color: var(--deep-wine);
+}
+
+.leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 30px;
+}
+
+.leadership-card {
+  background: var(--white);
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(90, 16, 38, 0.05);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.leadership-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(90, 16, 38, 0.08);
+}
+
+.leadership-card-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.leadership-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--deep-wine), #7a1830);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.leadership-name {
+  font-size: 1.3rem;
+  font-family: var(--font-heading);
+  color: var(--deep-wine);
+  line-height: 1.2;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.leadership-role {
+  font-size: 0.85rem;
+  color: var(--gold);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.leadership-bio {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+
+.leadership-card.expanded .leadership-bio {
+  max-height: 2000px;
+  opacity: 1;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.leadership-bio p {
+  font-size: 0.95rem;
+  color: var(--charcoal);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.leadership-bio p:last-child {
+  margin-bottom: 0;
+}
+
+.leadership-expand-hint {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: var(--gold);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .leadership-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .leadership-hero-title {
+    font-size: 2.2rem;
+  }
+
+  .leadership-tabs {
+    flex-wrap: wrap;
+  }
+}

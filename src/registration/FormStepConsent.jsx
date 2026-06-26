@@ -78,7 +78,7 @@ const FormStepConsent = ({ data, onChange, errors }) => {
         <div className="official-use-box">
           <p className="official-use-title">For Official Use Only</p>
           <div className="official-use-fields">
-            {['Registered by', 'Date', 'Candidate ID'].map(lbl => (
+            {['Registered by', 'Date', 'Member ID'].map(lbl => (
               <div key={lbl} className="official-use-field">
                 <span className="official-field-label">{lbl}</span>
                 <span className="official-field-line" />

@@ -24,17 +24,15 @@ import { validateStep } from './formValidation'
 import { supabase } from '../lib/supabase'
 
 import FormStepPersonal     from './FormStepPersonal'
-import FormStepEmployment   from './FormStepEmployment'
 import FormStepQualification from './FormStepQualification'
-import FormStepUpload       from './FormStepUpload'
+import FormStepEmployment   from './FormStepEmployment'
 import FormStepConsent      from './FormStepConsent'
 
 /* ── Step Components Map ──────────────────────────────── */
 const STEP_COMPONENTS = [
   FormStepPersonal,
-  FormStepEmployment,
   FormStepQualification,
-  FormStepUpload,
+  FormStepEmployment,
   FormStepConsent,
 ]
 
@@ -85,8 +83,7 @@ const SuccessScreen = ({ onGoHome }) => (
     <div className="success-icon">🎉</div>
     <h2 className="success-title">Registration Submitted!</h2>
     <p className="success-text">
-      Thank you for registering with CREX Africa. Your candidate profile has been received
-      and will be reviewed by our team. We will be in touch via WhatsApp or email shortly.
+      Your CREX membership registration has been submitted successfully.
     </p>
     <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', marginTop: '8px' }}>
       <button className="btn-crex-back" onClick={onGoHome}>Return to Home</button>
@@ -207,33 +204,20 @@ const RegistrationForm = ({ onNavigateHome }) => {
 
       // 2. Prepare database payload
       const payload = {
-        full_name: formData.fullName,
+        full_name: formData.title ? `${formData.title} ${formData.fullName}`.trim() : formData.fullName,
         date_of_birth: formData.dateOfBirth || null,
         gender: formData.gender || null,
-        phone: formData.phone,
+        regular_phone: formData.phone,
         email: formData.email,
         residential_address: formData.address || null,
-        city: formData.city || null,
+        town_city: formData.city || null,
         region: formData.region || null,
         nationality: formData.nationality || null,
-        ghana_card_number: formData.ghanaCard || null,
+        title: formData.jobTitle || null,
         
-        former_place_of_work: formData.formerWork || null,
-        job_title_role: formData.jobTitle || null,
-        industry: formData.industry || null,
-        preferred_location: formData.preferredLocation || null,
-        other_location: formData.otherLocation || null,
-        employment_type: formData.employmentType || null,
-        available_start_time: formData.availableTime || null,
-        willing_to_relocate: formData.willingToRelocate || null,
-        
-        highest_education: (formData.educationLevel === 'Other' && formData.otherEducation) ? formData.otherEducation : (formData.educationLevel || null),
-        institutions_attended: formData.institutions || null,
-        years_experience: formData.workYears || null,
         key_skills: formData.keySkills || [],
         languages_spoken: formData.languages || [],
-        other_language: formData.otherLanguage || null,
-        certifications: formData.certifications || null,
+        professional_certifications: formData.certifications || null,
         
         has_cv: hasCV,
         cv_file_path: cvPath,
@@ -245,9 +229,9 @@ const RegistrationForm = ({ onNavigateHome }) => {
         signed_date: formData.signatureDate || null
       }
 
-      // 3. Insert applicant record
+      // 3. Insert member record
       const { error: dbError } = await supabase
-        .from('applicants')
+        .from('members')
         .insert([payload])
 
       if (dbError) {
@@ -279,10 +263,9 @@ const RegistrationForm = ({ onNavigateHome }) => {
           <div className="register-logo-badge">CREX</div>
           <span className="register-logo-label">Africa</span>
         </div>
-        <h1 className="register-main-title">Create Your Candidate Profile</h1>
+        <h1 className="register-main-title">CREX Membership Registration</h1>
         <p className="register-subtitle">
-          Join our growing network of experienced professionals and let CREX connect
-          you with opportunities across Ghana and Africa.
+          Join our growing network of retired experts and continue building the nation at your own pace.
         </p>
       </div>
 
@@ -340,7 +323,7 @@ const RegistrationForm = ({ onNavigateHome }) => {
                     Submitting...
                   </>
                 ) : isLastStep ? (
-                  'Submit Registration ✓'
+                  'Submit Membership Form ✓'
                 ) : (
                   'Save & Continue →'
                 )}

@@ -7,44 +7,72 @@ export default function AboutPage({ onNavigateToContact }) {
   const teamData = {
     board: [
       {
-        name: "Prof. Kwabena Mensah",
-        role: "Chairman, Board of Trustees",
-        bio: "Former Director at the Ministry of Education with over 35 years of experience in educational policy, governance, and national reform development.",
-        initials: "KM"
+        name: "Prof. Albert Martins",
+        role: "Chair, Board of Trustees",
+        bio: "Prof Albert Martins is the founder and Executive Director of the Centre for Retired Experts. He holds a PhD in Marketing (UK), MSc in Marketing (UK), MBA in Marketing (Ghana), and has over 25 years of experience in Marketing practice, Business consultancy, and Academic lecturing both in Ghana and the UK. He was previously a Senior Lecturer at UPSA and Deputy Director of its Research & Consultancy Centre.",
+        initials: "AM"
       },
       {
-        name: "Dr. Ama Boateng",
-        role: "Trustee & Healthcare Specialist",
-        bio: "Retired Chief Medical Officer and public health administrator. Passionate about health policy planning, active ageing, and elderly wellness.",
-        initials: "AB"
+        name: "Henry Michael Wood (Esq)",
+        role: "Secretary, Board of Trustees",
+        bio: "Board Secretary and Acting Policy, Advocacy & Partnerships Manager, providing legal counsel and partnership oversight. He brings extensive legal expertise and administrative leadership to the board.",
+        initials: "HW"
       },
       {
-        name: "Mrs. Elizabeth Addo",
-        role: "Trustee & Rural Development Expert",
-        bio: "Retired Regional Director of Agriculture. Focused on sustainable farming practices, food security, and rural empowerment initiatives.",
-        initials: "EA"
-      }
-    ],
-    associates: [
-      {
-        name: "Ing. Samuel Osei",
-        role: "Senior Associate, Infrastructure",
-        bio: "Former Head of Infrastructure at the Ghana Highway Authority. Specializes in civil engineering, project management, and structural safety auditing.",
-        initials: "SO"
+        name: "Dr. Chris Boamah-Mensah",
+        role: "Trustee",
+        bio: "Trustee and Acting Recruitment, Development & Deployment Manager. Specializes in talent acquisition, professional placement, and human capital deployment workflows.",
+        initials: "CBM"
       },
       {
-        name: "Mr. Kofi Asante",
-        role: "Senior Associate, Digital Transformation",
-        bio: "Former CTO of the National ICT Agency. Leading expert in technology deployment, cyber security framework development, and national database systems.",
-        initials: "KA"
+        name: "Dr. Mrs. Benedicta Quao",
+        role: "Trustee",
+        bio: "Senior Research Fellow, Lecturer, Economist and Management Consultant with UPSA. Former Manager in Advisory Services at PwC. Benedicta brings a wealth of expertise and experience in Management, Consultancy, Training, and MSME sector research, having previously served as Board Chair of VisionFund Micro Credit.",
+        initials: "BQ"
+      },
+      {
+        name: "Dr. Sampson Narteh-Yoe",
+        role: "Trustee",
+        bio: "Financial Economist and Chartered Licensed International Financial Analyst with over 25 years of experience. Senior Lecturer of Finance at UPSA and Lead Consultant for TCT Africa Consult. Former Treasurer of Construction Bank (GH) Ltd and CFO of Blu Telecommunications.",
+        initials: "SNY"
       }
     ],
     management: [
       {
-        name: "Mr. Kofi Asante",
-        role: "Acting Executive Director",
-        bio: "Overseeing the strategic direction, partner relations, and deployment workflows at CREX. Dedicated to bridging experience and opportunity.",
-        initials: "KA"
+        name: "Prof. Albert Martins",
+        role: "Executive Director & Ag. Marketing & Resource Mobilisation Manager",
+        bio: "Founder and Executive Director. Former Senior Lecturer at UPSA with extensive experience in Strategic Marketing Management, Change Management, and Corporate/Business Strategy.",
+        initials: "AM"
+      },
+      {
+        name: "Dr. Sampson Narteh-yoe",
+        role: "Ag. Director of Finance & Administration",
+        bio: "Senior Lecturer of Finance at UPSA with a PhD in Economics and Finance. Expert in Treasury Management, Financial Controls, and Economic Analysis.",
+        initials: "SNY"
+      },
+      {
+        name: "Dr. Chris Boamah-Mensah",
+        role: "Ag. Recruitment, Development & Deployment Manager",
+        bio: "Managing database profiling, retooling alignment, and opportunity matching workflows for retired experts.",
+        initials: "CBM"
+      },
+      {
+        name: "Dr. Benedicta Quao",
+        role: "Ag. Research, Training & Consultancy Manager",
+        bio: "Directing professional training, capacity building, and consultancy services. Senior Lecturer at UPSA and former PwC Advisory Manager.",
+        initials: "BQ"
+      },
+      {
+        name: "Mr. Henry Wood (Esq)",
+        role: "Ag. Policy, Advocacy & Partnerships Manager",
+        bio: "Leading legal coordination, policy advocacy campaigns, and strategic partnerships with public and private sector stakeholders.",
+        initials: "HW"
+      },
+      {
+        name: "Justice Asiedu",
+        role: "Ag. Business Development, Operations & Events Coordinator",
+        bio: "Coordinating operational logistics, business development opportunities, and organizational events.",
+        initials: "JA"
       }
     ]
   }
@@ -83,13 +111,10 @@ export default function AboutPage({ onNavigateToContact }) {
             </div>
             <div className="about-split-right">
               <p className="about-split-text">
-                The Centre for Retired Experts (CREX) is a specialized think tank on retiree expertise founded in 2026 and headquartered in Ghana. CREX exists to transform retiree experience into meaningful impact for national and continental development.
+                Welcome to the Centre for Retired Experts CREX, a specialised think-tank on retired professionals. It is a non-governmental, apolitical action-oriented organisation established to identify, mobilise and deploy the wealth of experience, knowledge, institutional memory and expertise of retirees for development. This is achieved by reconnecting retirees to meaningful opportunities that drive sustainable development, mentorship, and institutional strengthening across Africa. Thus, CREX’s core mandate is to turn retiree experience into impact for development.
               </p>
               <p className="about-split-text">
-                We believe retirement should not represent the end of productivity or contribution. Instead, it should mark the beginning of a new chapter — one where decades of experience, leadership, and institutional knowledge continue to shape businesses, communities, governments, and future generations.
-              </p>
-              <p className="about-split-text">
-                CREX was established to reconnect retired professionals with opportunities where their expertise can still create measurable social, economic, and developmental value across Africa.
+                CREX embraces all categories of retirees across Ghana's public, private, and civil society sectors, channelling their experiences and expertise productively for national development. CREX is the place where Experience meets Significance, and where we strongly believe that retirement is not the end of Service but the beginning of Significance. The Organisation is currently headquartered in Ghana, with plans to expand into other African countries.
               </p>
             </div>
           </div>
@@ -120,58 +145,27 @@ export default function AboutPage({ onNavigateToContact }) {
         </div>
       </section>
 
-      {/* 4. Why CREX Exists (Storytelling Blocks) */}
-      <section className="about-why-exists">
+      {/* 4. Purpose Section */}
+      <section className="about-purpose section-padding light-bg" style={{ borderTop: '1px solid rgba(0,0,0,0.05)' }}>
         <div className="container">
-          <div className="about-section-header">
-            <span className="about-hero-tag">Why CREX Matters</span>
-            <h2 className="about-section-title">Harnessing Decades of Wisdom</h2>
-            <p className="about-section-desc">
-              Modern societies face increasingly complex economic, social, and institutional challenges. While innovation and youth remain important drivers of progress, experience remains equally essential. CREX ensures this expertise is not lost.
-            </p>
-          </div>
-
-          <div className="story-blocks-container">
-            {/* Block 1 */}
-            <div className="story-block">
-              <div className="story-image-container">
-                <img src="/retired_teacher.png" alt="Retired teacher mentoring" className="story-image" />
-              </div>
-              <div className="story-content">
-                <span className="story-num">01 / Education &amp; Mentorship</span>
-                <h3 className="story-title">Decades of Practical Problem-Solving</h3>
-                <p className="story-text">
-                  Across Africa, thousands of highly experienced educators and professionals retire every year with decades of practical wisdom, leadership insight, and technical expertise. By pairing them with classrooms and communities, CREX transfers this knowledge to younger generations.
-                </p>
-              </div>
+          <div className="about-split-layout">
+            <div className="about-split-left">
+              <span className="about-hero-tag">The Challenge & Response</span>
+              <h2>Our Purpose</h2>
             </div>
-
-            {/* Block 2 */}
-            <div className="story-block reversed">
-              <div className="story-image-container">
-                <img src="/executive_advising.png" alt="Executive advising startups" className="story-image" />
-              </div>
-              <div className="story-content">
-                <span className="story-num">02 / Leadership &amp; Governance</span>
-                <h3 className="story-title">Strategic Decision-Making Support</h3>
-                <p className="story-text">
-                  Retired corporate executives, public administrators, and financial experts support emerging organizations and local SMEs. Their advisory support helps institutions build robust governance structures, manage risks, and scale sustainably.
-                </p>
-              </div>
-            </div>
-
-            {/* Block 3 */}
-            <div className="story-block">
-              <div className="story-image-container">
-                <img src="/engineer_reviewing.png" alt="Engineer reviewing plans" className="story-image" />
-              </div>
-              <div className="story-content">
-                <span className="story-num">03 / Engineering &amp; Technology</span>
-                <h3 className="story-title">Preserving Technical &amp; Historical Expertise</h3>
-                <p className="story-text">
-                  Senior engineers and project managers review structural plans, oversee quality standards, and provide crucial engineering audit advice, ensuring new infrastructure is built on solid, time-tested foundations.
-                </p>
-              </div>
+            <div className="about-split-right">
+              <p className="about-split-text" style={{ fontSize: '1.25rem', color: 'var(--deep-wine)', fontWeight: '500', marginBottom: '20px' }}>
+                Valuable institutional memory, professional wisdom and expertise are lost when experts retire without mechanisms to transfer knowledge.
+              </p>
+              <p className="about-split-text" style={{ marginBottom: '15px' }}>
+                In Ghana, Retiree expertise and experiences are grossly underutilised after retirement. There is a lack of structured platforms for retirees to continue contributing to national productivity or community development. This has resulted in a critical gap between the potential contributions of retirees and the systems available to engage them.
+              </p>
+              <p className="about-split-text" style={{ marginBottom: '15px' }}>
+                Additionally, Ghana lacks a coordinated national framework or database for mobilising and deploying retired professionals for developmental projects. Besides, there is a weak institutional knowledge transfer system among public and private sector organisations in Ghana.
+              </p>
+              <p className="about-split-text" style={{ marginTop: '20px', borderLeft: '4px solid var(--gold)', paddingLeft: '20px', fontStyle: 'italic' }}>
+                CREX has been established to address these challenges. CREX highlights the value of the “golden years” (retirement phase) in supporting Ghana’s growth and seeks to transform retirement into a new phase of national contribution - ensuring that retirement does not become an end to productivity, but a new beginning in the lifelong journey of national service.
+              </p>
             </div>
           </div>
         </div>
@@ -189,8 +183,8 @@ export default function AboutPage({ onNavigateToContact }) {
                 </svg>
               </div>
               <h3 className="vm-title">Our Vision</h3>
-              <p className="vm-text">
-                To become Africa’s leading platform for mobilising and deploying the expertise of retirees for sustainable development.
+              <p className="vm-text" style={{ fontSize: '1.05rem', lineHeight: '1.6' }}>
+                Becoming the foremost institution passionately creating nations in Africa where retired experts remain active nation-builders whose expertise power the next generations.
               </p>
             </div>
 
@@ -201,9 +195,65 @@ export default function AboutPage({ onNavigateToContact }) {
                 </svg>
               </div>
               <h3 className="vm-title">Our Mission</h3>
-              <p className="vm-text">
-                CREX strengthens human capital by identifying, engaging, and deploying the proven expertise, competencies, knowledge, and experiences of retired professionals across diverse sectors for development.
-              </p>
+              <ul className="vm-text" style={{ textAlign: 'left', paddingLeft: '0', display: 'flex', flexDirection: 'column', gap: '15px', listStyleType: 'none' }}>
+                <li style={{ borderLeft: '3px solid var(--gold)', paddingLeft: '12px', fontSize: '0.95rem', lineHeight: '1.5' }}>
+                  <strong>Complementing capital:</strong> Complementing Ghana’s human resource capital by identifying, mobilising and deploying retirees' expertise and experience for sustainable development across diverse sectors.
+                </li>
+                <li style={{ borderLeft: '3px solid var(--gold)', paddingLeft: '12px', fontSize: '0.95rem', lineHeight: '1.5' }}>
+                  <strong>Empowering retirees:</strong> Empowering retirees by creating sustainable opportunities for their engagement in advisory, mentorship, capacity-building, research, consultancy and community development initiatives through collaborative partnerships around the world.
+                </li>
+                <li style={{ borderLeft: '3px solid var(--gold)', paddingLeft: '12px', fontSize: '0.95rem', lineHeight: '1.5' }}>
+                  <strong>Enabling beneficiaries:</strong> Enabling beneficiaries (user-organisations or communities) to make informed decisions, solve complex problems, and achieve their goals more effectively through its wealth of retired experts who provide vintage experience, expertise, practical wisdom, excellent solutions and valuable insights.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5.5 Objectives Section */}
+      <section className="about-objectives section-padding white-bg" style={{ borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+        <div className="container">
+          <div className="about-section-header" style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <span className="about-hero-tag">Strategic Targets</span>
+            <h2 className="about-section-title">Our Objectives</h2>
+            <p className="about-section-desc" style={{ margin: '20px auto 0', maxWidth: '800px' }}>
+              CREX operates under eight clear objectives designed to channel retiree knowledge into sustainable national progress and member well-being.
+            </p>
+          </div>
+
+          <div className="objectives-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '30px' }}>
+            <div className="objective-card" style={{ background: 'var(--warm-ivory)', padding: '30px', borderRadius: '16px', borderLeft: '4px solid var(--gold)' }}>
+              <span className="obj-number" style={{ display: 'block', fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--deep-wine)', marginBottom: '10px' }}>01</span>
+              <p style={{ fontSize: '0.95rem', lineHeight: '1.6', color: 'var(--charcoal)' }}>To serve as a structured platform for retirees to remain engaged, relevant, and socially connected after leaving formal employment.</p>
+            </div>
+            <div className="objective-card" style={{ background: 'var(--warm-ivory)', padding: '30px', borderRadius: '16px', borderLeft: '4px solid var(--gold)' }}>
+              <span className="obj-number" style={{ display: 'block', fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--deep-wine)', marginBottom: '10px' }}>02</span>
+              <p style={{ fontSize: '0.95rem', lineHeight: '1.6', color: 'var(--charcoal)' }}>To create and manage a comprehensive national database of retired professionals across sectors.</p>
+            </div>
+            <div className="objective-card" style={{ background: 'var(--warm-ivory)', padding: '30px', borderRadius: '16px', borderLeft: '4px solid var(--gold)' }}>
+              <span className="obj-number" style={{ display: 'block', fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--deep-wine)', marginBottom: '10px' }}>03</span>
+              <p style={{ fontSize: '0.95rem', lineHeight: '1.6', color: 'var(--charcoal)' }}>To identify short-term and long-term job opportunities in Ghana and abroad for CREX registered members.</p>
+            </div>
+            <div className="objective-card" style={{ background: 'var(--warm-ivory)', padding: '30px', borderRadius: '16px', borderLeft: '4px solid var(--gold)' }}>
+              <span className="obj-number" style={{ display: 'block', fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--deep-wine)', marginBottom: '10px' }}>04</span>
+              <p style={{ fontSize: '0.95rem', lineHeight: '1.6', color: 'var(--charcoal)' }}>To establish structured mentorship frameworks and facilitate skills transfer and intergenerational knowledge exchange between retired experts and younger generations of professionals, entrepreneurs and students.</p>
+            </div>
+            <div className="objective-card" style={{ background: 'var(--warm-ivory)', padding: '30px', borderRadius: '16px', borderLeft: '4px solid var(--gold)' }}>
+              <span className="obj-number" style={{ display: 'block', fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--deep-wine)', marginBottom: '10px' }}>05</span>
+              <p style={{ fontSize: '0.95rem', lineHeight: '1.6', color: 'var(--charcoal)' }}>To advocate for the recognition of retirees as valuable national assets and promote positive ageing, active retirement and retirement well-being.</p>
+            </div>
+            <div className="objective-card" style={{ background: 'var(--warm-ivory)', padding: '30px', borderRadius: '16px', borderLeft: '4px solid var(--gold)' }}>
+              <span className="obj-number" style={{ display: 'block', fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--deep-wine)', marginBottom: '10px' }}>06</span>
+              <p style={{ fontSize: '0.95rem', lineHeight: '1.6', color: 'var(--charcoal)' }}>To facilitate research, advisory and consultancy assignments where retirees’ expertise can drive policy formulation and implementation.</p>
+            </div>
+            <div className="objective-card" style={{ background: 'var(--warm-ivory)', padding: '30px', borderRadius: '16px', borderLeft: '4px solid var(--gold)' }}>
+              <span className="obj-number" style={{ display: 'block', fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--deep-wine)', marginBottom: '10px' }}>07</span>
+              <p style={{ fontSize: '0.95rem', lineHeight: '1.6', color: 'var(--charcoal)' }}>To secure funding and partnerships to support CREX aspirations, operations and projects.</p>
+            </div>
+            <div className="objective-card" style={{ background: 'var(--warm-ivory)', padding: '30px', borderRadius: '16px', borderLeft: '4px solid var(--gold)' }}>
+              <span className="obj-number" style={{ display: 'block', fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--deep-wine)', marginBottom: '10px' }}>08</span>
+              <p style={{ fontSize: '0.95rem', lineHeight: '1.6', color: 'var(--charcoal)' }}>To promote the well-being of its retiree members.</p>
             </div>
           </div>
         </div>
@@ -223,25 +273,25 @@ export default function AboutPage({ onNavigateToContact }) {
           <div className="what-we-do-grid">
             <div className="wwd-card">
               <span className="wwd-icon">📂</span>
-              <h3 className="wwd-title">Talent Identification</h3>
+              <h3 className="wwd-title">Talent Identification &amp; Database Development</h3>
               <p className="wwd-text">
-                We systematically identify, profile, and maintain a growing database of retired professionals across multiple sectors and disciplines.
+                Systematically identifying, profiling, and maintaining a dynamic database of retired professionals across sectors.
               </p>
             </div>
 
             <div className="wwd-card">
               <span className="wwd-icon">🎓</span>
-              <h3 className="wwd-title">Capacity Re-engagement</h3>
+              <h3 className="wwd-title">Capacity Re-engagement &amp; Continuous Development</h3>
               <p className="wwd-text">
-                We support retirees through orientation, retooling, and continuous learning programs that align their expertise with evolving industry and societal needs.
+                Providing orientation, upskilling, and retooling to align retirees’ expertise with current market and societal needs.
               </p>
             </div>
 
             <div className="wwd-card">
               <span className="wwd-icon">💼</span>
-              <h3 className="wwd-title">Deployment &amp; Consultancy</h3>
+              <h3 className="wwd-title">Deployment &amp; Consultancy Services</h3>
               <p className="wwd-text">
-                We connect retired experts to opportunities within public institutions, private organizations, NGOs, educational institutions, and development initiatives where their expertise can drive meaningful outcomes.
+                Matching retirees to opportunities in public, private, and non-profit sectors for training, research, advisory, consultancy, mentorship, board appointment and project-based roles.
               </p>
             </div>
 
@@ -249,15 +299,15 @@ export default function AboutPage({ onNavigateToContact }) {
               <span className="wwd-icon">⚖️</span>
               <h3 className="wwd-title">Advocacy &amp; Policy Influence</h3>
               <p className="wwd-text">
-                We advocate for policies that recognize retirees as an important component of national human capital and sustainable development across Ghana and Africa.
+                Promoting policies that recognise and integrate retirees as a vital component of national human capital.
               </p>
             </div>
 
             <div className="wwd-card">
               <span className="wwd-icon">🔍</span>
-              <h3 className="wwd-title">Research &amp; Thought Leadership</h3>
+              <h3 className="wwd-title">Research, Knowledge Management &amp; Thought Leadership</h3>
               <p className="wwd-text">
-                We document, publish, and share insights from retired professionals to preserve institutional memory and support future development practices.
+                Researching, disseminating, and publishing insights drawn from retirees’ experiences to inform development practice.
               </p>
             </div>
           </div>
@@ -271,7 +321,7 @@ export default function AboutPage({ onNavigateToContact }) {
             <span className="about-hero-tag">Our Foundational Beliefs</span>
             <h2 className="about-section-title">Core Values</h2>
             <p className="about-section-desc">
-              Our culture and engagements are built on five foundational principles that define who we are and how we serve.
+              Our culture and engagements are built on six foundational principles that define who we are and how we serve.
             </p>
           </div>
 
@@ -279,10 +329,10 @@ export default function AboutPage({ onNavigateToContact }) {
             <div className="value-card-row">
               <div className="value-row-left">
                 <span className="value-num">01</span>
-                <h3 className="value-title">Excellence</h3>
+                <h3 className="value-title">Development</h3>
               </div>
               <p className="value-text">
-                Delivering high-quality service, knowledge transfer, and professional engagement.
+                Prioritising national development over financial gains.
               </p>
             </div>
 
@@ -292,37 +342,47 @@ export default function AboutPage({ onNavigateToContact }) {
                 <h3 className="value-title">Integrity</h3>
               </div>
               <p className="value-text">
-                Upholding honesty, accountability, and ethical leadership in all engagements.
+                Upholding honesty, accountability, and ethical standards.
               </p>
             </div>
 
             <div className="value-card-row">
               <div className="value-row-left">
                 <span className="value-num">03</span>
-                <h3 className="value-title">Innovation</h3>
+                <h3 className="value-title">Excellence</h3>
               </div>
               <p className="value-text">
-                Blending experience with modern systems and technology to solve evolving challenges.
+                Delivering the highest quality service and knowledge transfer.
               </p>
             </div>
 
             <div className="value-card-row">
               <div className="value-row-left">
                 <span className="value-num">04</span>
-                <h3 className="value-title">Collaboration</h3>
+                <h3 className="value-title">Innovation</h3>
               </div>
               <p className="value-text">
-                Building meaningful partnerships across sectors and communities.
+                Combining vintage experience and technology for solutions.
               </p>
             </div>
 
             <div className="value-card-row">
               <div className="value-row-left">
                 <span className="value-num">05</span>
-                <h3 className="value-title">Respect for Experience</h3>
+                <h3 className="value-title">Collaboration</h3>
               </div>
               <p className="value-text">
-                Recognizing the dignity, value, and contribution of retirees and experienced professionals.
+                Fostering fruitful partnerships with stakeholders.
+              </p>
+            </div>
+
+            <div className="value-card-row">
+              <div className="value-row-left">
+                <span className="value-num">06</span>
+                <h3 className="value-title">Respect and Inclusion</h3>
+              </div>
+              <p className="value-text">
+                Valuing diverse experiences, expertise and dignity of all.
               </p>
             </div>
           </div>
@@ -336,7 +396,7 @@ export default function AboutPage({ onNavigateToContact }) {
             <span className="about-hero-tag">Governance &amp; Leadership</span>
             <h2 className="about-section-title">Our Leadership</h2>
             <p className="about-section-desc">
-              CREX is guided by seasoned trustees, senior technical associates, and acting management committed to national contribution.
+              CREX is guided by seasoned trustees and an acting management team committed to national contribution.
             </p>
           </div>
 
@@ -348,16 +408,10 @@ export default function AboutPage({ onNavigateToContact }) {
               Board of Trustees
             </button>
             <button 
-              className={`lead-tab-btn ${activeTab === 'associates' ? 'active' : ''}`}
-              onClick={() => setActiveTab('associates')}
-            >
-              Technical Associates
-            </button>
-            <button 
               className={`lead-tab-btn ${activeTab === 'management' ? 'active' : ''}`}
               onClick={() => setActiveTab('management')}
             >
-              Acting Management
+              Acting Management Team
             </button>
           </div>
 
