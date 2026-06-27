@@ -23,7 +23,8 @@ export default function PartnershipsPage({ onNavigateToContact }) {
       logo: "/RCC-UPSA.png",
       description: "The Research and Consultancy Centre (RCC) is a strategic centre in UPSA established to oversee, promote and administer all research and consultancy activities of the University. Since its establishment, the Centre has gained reputation for creating value for its clients and bring competitive advantage to their activities. The Centre has a wide range of expertise but specializes in the provision of research and consultancy services in the following areas: survey design and implementation; data management and analysis; social and economic research; monitoring and evaluation; impact assessment; professional training and human resource development, and business advisory services. RCC's knowledge and commitment, combined with extensive experiences gained from working on both international and national assignments enables the Centre to provide the highest quality of service to its clients."
     }
-  ]
+  ].filter(partner => partner.name.includes("Youth Bridge"));
+
 
   return (
     <div className="partnerships-page">

@@ -238,7 +238,8 @@ const partnershipsData = [
     name: "Research & Consultancy Centre (RCC - UPSA)",
     desc: "The Research and Consultancy Centre (RCC) is a strategic centre in UPSA established to oversee, promote and administer all research and consultancy activities of the University. Since its establishment, the Centre has gained reputation for creating value for its clients and bring competitive advantage to their activities."
   }
-];
+].filter(partner => partner.name.includes("Youth Bridge"));
+
 
 const newsEventsData = {
   news: [
@@ -713,18 +714,18 @@ function App() {
       {/* Partner Logo Scroll Bar */}
       <section className="partner-logo-scroll">
         <div className="partner-logo-track">
-          <img src="/CIMG.jpg" alt="CIMG" className="partner-logo-item" />
-          <img src="/CFAS.png" alt="CFAS" className="partner-logo-item" />
+          {/* <img src="/CIMG.jpg" alt="CIMG" className="partner-logo-item" /> */}
+          {/* <img src="/CFAS.png" alt="CFAS" className="partner-logo-item" /> */}
           <img src="/YBF.png" alt="YBF" className="partner-logo-item" />
-          <img src="/RCC-UPSA.png" alt="RCC-UPSA" className="partner-logo-item" />
-          <img src="/CIMG.jpg" alt="CIMG" className="partner-logo-item" />
-          <img src="/CFAS.png" alt="CFAS" className="partner-logo-item" />
+          {/* <img src="/RCC-UPSA.png" alt="RCC-UPSA" className="partner-logo-item" /> */}
+          {/* <img src="/CIMG.jpg" alt="CIMG" className="partner-logo-item" /> */}
+          {/* <img src="/CFAS.png" alt="CFAS" className="partner-logo-item" /> */}
           <img src="/YBF.png" alt="YBF" className="partner-logo-item" />
-          <img src="/RCC-UPSA.png" alt="RCC-UPSA" className="partner-logo-item" />
-          <img src="/CIMG.jpg" alt="CIMG" className="partner-logo-item" />
-          <img src="/CFAS.png" alt="CFAS" className="partner-logo-item" />
+          {/* <img src="/RCC-UPSA.png" alt="RCC-UPSA" className="partner-logo-item" /> */}
+          {/* <img src="/CIMG.jpg" alt="CIMG" className="partner-logo-item" /> */}
+          {/* <img src="/CFAS.png" alt="CFAS" className="partner-logo-item" /> */}
           <img src="/YBF.png" alt="YBF" className="partner-logo-item" />
-          <img src="/RCC-UPSA.png" alt="RCC-UPSA" className="partner-logo-item" />
+          {/* <img src="/RCC-UPSA.png" alt="RCC-UPSA" className="partner-logo-item" /> */}
         </div>
       </section>
 
