@@ -540,6 +540,10 @@ function App() {
   )
 
   const setCurrentPage = (page) => {
+    if (page === 'register') {
+      window.open('https://ee-eu.kobotoolbox.org/x/8yk7EJOi', '_blank', 'noopener,noreferrer')
+      return
+    }
     const pathMap = {
       home:         '/',
       about:        '/about',
@@ -579,9 +583,13 @@ function App() {
     return cleanName.split(' ').slice(0, 2).map(n => n[0]).join('').toUpperCase()
   }
 
-  // Scroll to top on mount (only for non-root paths)
+  // Scroll to top on mount (only for non-root paths), or redirect if accessing /register directly
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (window.location.pathname === '/register') {
+      window.location.replace('https://ee-eu.kobotoolbox.org/x/8yk7EJOi')
+    } else {
+      window.scrollTo(0, 0);
+    }
   }, []);
 
   useEffect(() => {
