@@ -1,0 +1,689 @@
+/* ═══════════════════════════════════════════════════════
+   PUBLICATIONS PAGE — Academic Journal Style
+   ═══════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,300;1,8..60,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ── Variables ─────────────────────────────────────────── */
+:root {
+  --pub-ink:       #1a1a2e;
+  --pub-wine:      #6b1c2e;
+  --pub-gold:      #b8892a;
+  --pub-rule:      #d4c5a0;
+  --pub-bg:        #faf8f4;
+  --pub-paper:     #ffffff;
+  --pub-muted:     #5a5a6a;
+  --pub-light:     #f0ece3;
+  --pub-accent:    #8b1a2e;
+}
+
+/* ── Page wrapper ────────────────────────────────────────── */
+.publications-page {
+  background: var(--pub-bg);
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── Page Hero ──────────────────────────────────────────── */
+.pub-hero {
+  background: linear-gradient(135deg, #1a1a2e 0%, #2d1b35 40%, #6b1c2e 100%);
+  padding: 100px 0 70px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pub-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.pub-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.pub-journal-label {
+  display: inline-block;
+  background: rgba(184, 137, 42, 0.15);
+  border: 1px solid rgba(184, 137, 42, 0.4);
+  color: var(--pub-gold);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 3px;
+  margin-bottom: 24px;
+}
+
+.pub-hero-title {
+  font-family: 'Lora', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+  margin: 0 0 20px;
+  max-width: 800px;
+}
+
+.pub-hero-subtitle {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.7);
+  max-width: 650px;
+  line-height: 1.7;
+  margin: 0 0 40px;
+}
+
+.pub-hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.pub-hero-stat {
+  text-align: center;
+}
+
+.pub-hero-stat-num {
+  display: block;
+  font-family: 'Lora', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--pub-gold);
+  line-height: 1;
+}
+
+.pub-hero-stat-label {
+  display: block;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.pub-hero-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,0.2);
+}
+
+/* ── Back button ─────────────────────────────────────────── */
+.pub-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.8);
+  font-size: 0.85rem;
+  padding: 8px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 40px;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.pub-back-btn:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border-color: rgba(255,255,255,0.5);
+}
+
+/* ── Main Layout ─────────────────────────────────────────── */
+.pub-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 40px 100px;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 60px;
+  align-items: start;
+}
+
+/* ── Paper List (left column) ────────────────────────────── */
+.pub-papers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Individual Paper Card ───────────────────────────────── */
+.pub-paper-card {
+  background: var(--pub-paper);
+  border: 1px solid #e5ddd0;
+  border-radius: 4px;
+  margin-bottom: 32px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.pub-paper-card:hover {
+  box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+}
+
+/* paper top bar */
+.pub-paper-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 32px;
+  border-bottom: 1px solid var(--pub-rule);
+  background: var(--pub-light);
+}
+
+.pub-paper-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--pub-wine);
+  text-transform: uppercase;
+}
+
+.pub-paper-category-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--pub-gold);
+  background: rgba(184, 137, 42, 0.12);
+  border: 1px solid rgba(184, 137, 42, 0.3);
+  padding: 4px 12px;
+  border-radius: 2px;
+}
+
+/* paper body */
+.pub-paper-body {
+  padding: 36px 40px 32px;
+}
+
+/* paper title */
+.pub-paper-title {
+  font-family: 'Lora', serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--pub-ink);
+  line-height: 1.35;
+  margin: 0 0 12px;
+}
+
+/* author line */
+.pub-paper-author {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.95rem;
+  color: var(--pub-wine);
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.pub-paper-affiliation {
+  font-size: 0.82rem;
+  color: var(--pub-muted);
+  margin-bottom: 20px;
+}
+
+/* rule separating meta from abstract */
+.pub-paper-rule {
+  border: none;
+  border-top: 1px solid var(--pub-rule);
+  margin: 20px 0;
+}
+
+/* Abstract label */
+.pub-abstract-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pub-wine);
+  margin-bottom: 10px;
+}
+
+.pub-abstract-text {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.97rem;
+  line-height: 1.75;
+  color: #3a3a4a;
+  margin: 0;
+}
+
+/* ── Expandable Full Content ─────────────────────────────── */
+.pub-full-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  border-top: none;
+}
+
+.pub-full-content.expanded {
+  max-height: 9999px;
+  border-top: 1px solid var(--pub-rule);
+  margin-top: 24px;
+}
+
+.pub-full-inner {
+  padding: 32px 40px 10px;
+}
+
+/* Academic body typography */
+.pub-full-inner h2 {
+  font-family: 'Lora', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--pub-ink);
+  margin: 32px 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--pub-rule);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pub-full-inner h2:first-child {
+  margin-top: 0;
+}
+
+.pub-full-inner h3 {
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--pub-wine);
+  margin: 20px 0 8px;
+  font-style: italic;
+}
+
+.pub-full-inner p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: #2e2e3e;
+  margin: 0 0 16px;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.pub-full-inner em {
+  font-style: italic;
+  color: var(--pub-muted);
+  font-size: 0.92rem;
+}
+
+.pub-full-inner ul,
+.pub-full-inner ol {
+  padding-left: 24px;
+  margin: 0 0 16px;
+}
+
+.pub-full-inner li {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.97rem;
+  line-height: 1.75;
+  color: #2e2e3e;
+  margin-bottom: 6px;
+}
+
+.pub-full-inner strong {
+  color: var(--pub-ink);
+  font-weight: 600;
+}
+
+/* Footnote / disclaimer block */
+.pub-full-inner blockquote,
+.pub-paper-footnote {
+  border-left: 3px solid var(--pub-gold);
+  margin: 24px 0;
+  padding: 14px 20px;
+  background: var(--pub-light);
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--pub-muted);
+  border-radius: 0 4px 4px 0;
+  line-height: 1.7;
+}
+
+/* ── Paper Actions ───────────────────────────────────────── */
+.pub-paper-actions {
+  padding: 18px 40px 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid var(--pub-rule);
+  margin-top: 16px;
+}
+
+.pub-read-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--pub-wine);
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 3px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.pub-read-btn:hover {
+  background: #8b1a2e;
+  transform: translateY(-1px);
+}
+
+.pub-read-btn.collapse-btn {
+  background: transparent;
+  color: var(--pub-wine);
+  border: 1px solid var(--pub-wine);
+}
+
+.pub-read-btn.collapse-btn:hover {
+  background: var(--pub-wine);
+  color: #fff;
+}
+
+.pub-read-btn svg {
+  transition: transform 0.3s;
+}
+
+.pub-read-btn.collapse-btn svg {
+  transform: rotate(180deg);
+}
+
+.pub-cite-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: var(--pub-muted);
+  border: 1px solid #d0c8ba;
+  padding: 10px 20px;
+  border-radius: 3px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pub-cite-btn:hover {
+  border-color: var(--pub-wine);
+  color: var(--pub-wine);
+}
+
+/* ── Sidebar ─────────────────────────────────────────────── */
+.pub-sidebar {
+  position: sticky;
+  top: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pub-sidebar-card {
+  background: var(--pub-paper);
+  border: 1px solid #e5ddd0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.pub-sidebar-header {
+  background: var(--pub-ink);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 12px 20px;
+}
+
+.pub-sidebar-body {
+  padding: 20px;
+}
+
+/* About journal */
+.pub-about-text {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.88rem;
+  color: var(--pub-muted);
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+/* Info rows */
+.pub-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 9px 0;
+  border-bottom: 1px solid #f0ece3;
+  font-family: 'Inter', sans-serif;
+}
+
+.pub-info-row:last-child {
+  border-bottom: none;
+}
+
+.pub-info-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--pub-ink);
+  text-transform: uppercase;
+  flex-shrink: 0;
+  padding-right: 8px;
+}
+
+.pub-info-value {
+  font-size: 0.82rem;
+  color: var(--pub-muted);
+  text-align: right;
+}
+
+/* Category list */
+.pub-cat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid #f0ece3;
+}
+
+.pub-cat-item:last-child {
+  border-bottom: none;
+}
+
+.pub-cat-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: var(--pub-ink);
+}
+
+.pub-cat-count {
+  background: var(--pub-light);
+  color: var(--pub-wine);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Authors list */
+.pub-author-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0ece3;
+}
+
+.pub-author-item:last-child {
+  border-bottom: none;
+}
+
+.pub-author-initials {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pub-wine), #2d1b35);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lora', serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.pub-author-info-name {
+  font-family: 'Lora', serif;
+  font-size: 0.88rem;
+  color: var(--pub-ink);
+  font-weight: 600;
+}
+
+.pub-author-info-role {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: var(--pub-muted);
+  margin-top: 2px;
+}
+
+/* CTA card */
+.pub-cta-card {
+  background: linear-gradient(135deg, #1a1a2e, #6b1c2e);
+  border-radius: 4px;
+  padding: 28px 20px;
+  text-align: center;
+}
+
+.pub-cta-title {
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.pub-cta-text {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.pub-cta-btn {
+  display: inline-block;
+  background: var(--pub-gold);
+  color: #1a1a2e;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  padding: 10px 24px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.pub-cta-btn:hover {
+  opacity: 0.9;
+}
+
+/* ── Divider between papers ──────────────────────────────── */
+.pub-section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 8px 0 32px;
+}
+
+.pub-section-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--pub-rule);
+}
+
+.pub-section-divider-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: var(--pub-gold);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .pub-body {
+    grid-template-columns: 1fr;
+    padding: 40px 24px 80px;
+  }
+
+  .pub-sidebar {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .pub-cta-card {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .pub-hero {
+    padding: 80px 0 50px;
+  }
+
+  .pub-hero-inner {
+    padding: 0 20px;
+  }
+
+  .pub-paper-body,
+  .pub-full-inner,
+  .pub-paper-actions {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .pub-paper-header {
+    padding: 12px 20px;
+  }
+
+  .pub-paper-title {
+    font-size: 1.25rem;
+  }
+
+  .pub-body {
+    padding: 30px 16px 60px;
+  }
+
+  .pub-hero-meta {
+    gap: 16px;
+  }
+
+  .pub-hero-stat-num {
+    font-size: 1.5rem;
+  }
+}

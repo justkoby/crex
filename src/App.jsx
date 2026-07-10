@@ -6,6 +6,7 @@ import PartnershipsPage from './Partnerships'
 import LeadershipPage from './Leadership'
 import RegistrationForm from './registration/RegistrationForm'
 import AdminPage from './admin/AdminPage'
+import PublicationsPage from './Publications'
 
 const slides = [
   {
@@ -103,12 +104,12 @@ const experts = [
   },
   {
     id: 3,
-    name: "Dr. Chris Boamah-Mensah",
+    name: "Dr. Christian Boamah-Mensah",
     role: "Trustee",
-    expertise: "Talent Acquisition & Human Capital",
-    years: "20+ years experience",
-    quote: "“The right talent in the right role transforms organisations.”",
-    tags: ["HR", "Recruitment", "Development"]
+    expertise: "Obstetrics & Gynaecology, Clinical Leadership & Administration",
+    years: "30+ years experience",
+    quote: "“Quality healthcare and mentorship are the cornerstones of national development.”",
+    tags: ["Healthcare", "Administration", "Mentorship"]
   },
   {
     id: 4,
@@ -457,6 +458,96 @@ const insights = [
       <h2>Conclusion</h2>
       <p>Retirees represent one of society’s most underutilised strategic resources. Recognising and integrating their expertise into development systems can strengthen institutions, empower younger generations, and contribute significantly to national growth. Experience remains a powerful asset for development.</p>
     `
+  },
+  {
+    id: 6,
+    category: "PUBLICATIONS",
+    title: "HIRING RETIREE EXPERTS - AN INVESTMENT WORTH MAKING",
+    excerpt: "Hiring retired individuals proves to be an investment worth making. Retired professionals have a lot to offer to organisations as they bring a wealth of knowledge, experience, maturity, expertise, etc.",
+    content: `
+      <p><em>By Dr. Benedicta Quao, Centre for Retired Experts (CREX)</em></p>
+      <h2>Introduction</h2>
+      <p>Though the current corporate landscape has changed with the introduction of technology and innovation, organisations are constantly looking for cost-effective professionals who deliver the greatest value. In this regard, hiring retired individuals proves to be an investment worth making. Retired professionals have a lot to offer to organisations as they bring a wealth of knowledge, experience, maturity, expertise, etc. to the corporate or organisational table. The following discussion justifies why forward-looking organisations should pursue experienced retired professionals.</p>
+      <h2>Experience and Expert Advice</h2>
+      <p>With decades of professional expertise, retired workers are a treasure of industry knowledge and experience. Their past roles have equipped them with insights into overcoming challenges, streamlining operations, and fostering innovation. This wealth of experience reduces the learning curve for companies, allowing them to quickly integrate retirees into crucial roles without extensive training. Retired professionals carry massive experience in their profile and can increasingly leverage on their experience to provide corporate value as mentors, consultants and advisors to the organisation. Years of professional experience equip retirees with a well-rounded approach to tackling challenges. Their ability to assess situations from various angles leads to creative and effective problem-solving. Retirees also provide a counterbalance to younger employees’ often faster-paced decision-making styles. Their measured approach ensures that risks are carefully evaluated, contributing to more sustainable outcomes.</p>
+      <h2>Value for Money</h2>
+      <p>Retired professionals have experienced complicated situations in both life and professional domains and thus do not easily go wrong in implementing decisions that involve risks. By using the intuition and judgment of retired experts, organisations can attract better associations, profits, and sales revenue as well as make an impact on society. Retired workers have built their reputations on reliability and commitment. After years of cultivating strong work ethics, they consistently deliver high-quality results. Their focus on completing tasks efficiently ensures fewer errors and improved productivity. Companies hiring retirees often notice a decline in absenteeism and an increase in overall dependability.</p>
+      <h2>Mentorship</h2>
+      <p>Retired experts are natural mentors, offering younger employees guidance that fosters growth and confidence. Their ability to impart practical knowledge and professional wisdom creates a collaborative environment where learning thrives. By sharing tips, strategies, and insights, retirees bridge generational gaps and enrich workplace relationships. Employees junior to such retired professionals can share their problems pertaining to both personal and professional concerns and receive beneficial advice from such experts. Mentorship not only boosts employee morale but also enhances retention rates. Younger staff members feel supported and empowered when paired with experienced colleagues, and can certainly look up to these seasoned veterans due to the high standards they set.</p>
+      <h2>Professionalism and Strong Work Ethic</h2>
+      <p>Most pensioners who are looking for post-retirement employment are proactive in handling complex tasks as employees of an organisation. Having spent years building their careers, retirees bring a strong sense of integrity and professionalism to the workplace. Their presence fosters a culture of respect, accountability, and collaboration. Teams benefit from retirees’ example, which often inspires younger employees to adopt similar values. Moreover, retired professionals have developed a strong work ethic due to actively working for several years.</p>
+      <h2>Cost-effectiveness</h2>
+      <p>Business organisations do not need to spend additional time and money training retired working professionals. Therefore, retirees’ ability to contribute to the firm is much quicker and cheaper. Retirees can be hired as part-time employees at part-time salaries with flexible working hours, which optimises staffing costs. Indeed retiree recruitment is an added advantage for start-ups and small-scale organisations with limited company employees and smaller office spaces. By providing retired professionals to work remotely and in hybrid formats in part-time commitments, organisations can save on infrastructural costs. Additionally, retirees’ availability for short-term assignments ensures critical tasks are completed without the long-term financial burden of additional full-time hires.</p>
+      <h2>Innovation and Networking</h2>
+      <p>Most retired professionals possess deep creativity and divergent thinking, and also exhibit deep understanding of certain issues as opposed to their younger counterparts. This creative prowess can help develop unique projects and working methods in organizations, which in turn might transform their overall working environment for the better. With decades of professional connections, retirees often come with an extensive network of industry contacts. These relationships can open doors to new business opportunities, partnerships, or collaborations. By employing retired professionals, organisations gain access to resources and insights that might otherwise be out of reach. Retirees also use their networks to stay informed about industry trends.</p>
+      <h2>Conclusion</h2>
+      <p>The Centre for Retired Experts (CREX) recommends that Business organisations should consider recruiting retired professionals based on the foregoing benefits. CREX suggests however, that organisations should balance that with the recruitment of young talent. This hybrid approach can enhance cost-effectiveness and foster a balanced workforce that combines deep experience, institutional knowledge, and mentorship with fresh perspectives, digital fluency, and innovation. This synergy strengthens organisational resilience, knowledge transfer, and adaptability in fast-changing markets.</p>
+      <p><em>The writer is a Senior Research Fellow/Senior Lecturer at the University of Professional Studies, Accra (UPSA) and a volunteer at the Centre for Retired Experts (CREX). CREX has been established to unlock and harness the wealth of knowledge, skills, and experience of retired Ghanaian professionals by reconnecting them to meaningful opportunities that drive sustainable development, mentorship, and institutional strengthening in Ghana.</em></p>
+    `
+  },
+  {
+    id: 7,
+    category: "PUBLICATIONS",
+    title: "LET'S STOP WASTING OUR RETIRED EXPERTS",
+    excerpt: "Ghana's rigid retirement laws force capable professionals out of service prematurely, leading to the underutilization of their vast expertise.",
+    content: `
+      <p><em>By Prof. Albert Martins, Centre for Retired Experts (CREX)</em></p>
+      <h2>Introduction</h2>
+      <p>Every year, thousands of seasoned experts retire from the public and private sectors of Ghana’s economy. Many of these retirees would have spent about three to four decades building institutions, managing complex projects, mentoring younger professionals, solving real problems, navigating institutional complexities, managing people, and learning from both successes and failures. Retirees, therefore, possess valuable expertise or professional experience which cannot be easily imported or manufactured.</p>
+      <p>Unfortunately, Ghana’s institutional systems rarely provide structured avenues for retaining or utilising this vast expertise after retirement. Once retirement arrives (usually at age 60), society and industry largely ignore them, as if their expertise has suddenly expired. It is regrettable that whilst retiree experience is a silent but valuable national asset, retired professionals represent one of Ghana’s most underutilised national resources. At a time when Ghana is facing significant development challenges from productivity gaps in public institutions to the need for stronger entrepreneurship and innovation, we cannot afford to waste the vast reservoir of knowledge and experience embodied in our retired professionals.</p>
+      <h2>Sad reality</h2>
+      <p>Across the world, nations are increasingly recognising that retired resources are a silent national asset. In Ghana, however, retirement often marks the end of formal employment. Ironically, it also marks the end of national engagement with some of our most experienced and knowledgeable professionals. Many highly experienced professionals retire at the peak of their intellectual and professional capacity, only to find themselves largely disconnected from national productivity. Though retired, many retirees remain intellectually active, professionally relevant, and physically capable of contributing meaningfully to society for another 15 to 20 years after retirement. Their accumulated wisdom represents a national treasure that cannot be easily replaced.</p>
+      <p>However, once these professionals turn 60, they abruptly move from high responsibility to limited engagement. Ghana’s rigid retirement laws force capable professionals out of service prematurely, leading to the underutilization of their vast expertise. This represents not only a personal loss for retirees but also a significant national waste of knowledge, skills, and institutional memory.</p>
+      <h2>Experience in the drain</h2>
+      <p>Non-utilisation of retiree experts is a huge cost to Ghana and a reduction in national productivity. Highly capable professionals who still have 15–20 productive years ahead of them after retirement are often left underutilised. In a country like Ghana facing skills shortages, such a situation should be considered economically irresponsible. When experienced professionals exit the workforce without mechanisms for continued engagement, organisations lose valuable historical knowledge about policies, processes, and lessons from past successes and failures. Lessons learned over decades can disappear overnight, which could be a big loss to any economy.</p>
+      <p>Ghana lacks a structured mentorship programme for its young professionals. The country’s failure to leverage the rich expertise of retired professionals results in weak mentorship for young professionals which negatively affects entrepreneurship and business development. Ghana has a vibrant and youthful population with great entrepreneurial potential, yet many startups fail due to a lack of guidance, strategic planning, and managerial experience. Young professionals entering leadership roles may struggle without mentorship. Retired experts can provide critical mentorship and invaluable guidance to startups, students, young engineers, entrepreneurs, teachers, public administrators, trainee managers, etc. Another reality is that the underutilization of retired resources in Ghana results in brain drain. Of course, retirees also know how to go out there to seek greener pastures.</p>
+      <p>The social cost of wasting retiree expertise cannot be discounted. Retirement can bring psychological and medical challenges to many professionals who suddenly move from highly active roles to limited engagement. Many retirees experience a loss of identity, reduced social engagement, and financial stress despite having much to offer society. A society that sidelines its experienced citizens risks losing not only productivity but also valuable wisdom, social stability and intergenerational continuity. Moreover, there is no structured platform for retirees to continue contributing to national productivity after retirement. Ghana currently lacks a clear policy on retiree engagement and relevant institutions to leverage on retirees’ expertise.</p>
+      <h2>Country Practices</h2>
+      <p>Many countries have recognised the value of retired professionals to national development. Countries such as Japan, Germany, and Singapore actively promote “active ageing” policies, encouraging retirees to participate in consulting, mentoring, and flexible employment. Japan encourages retirees to remain active in volunteerism, part-time work, mentoring, and consulting. In Singapore, retired professionals are often re-hired under flexible arrangements to support knowledge transfer. In Germany, companies frequently maintain senior expert programs, where retired engineers and specialists provide consultancy on critical projects. Considering the foregoing, Ghana can no longer afford to neglect one of its most valuable resources: retired, experienced professionals.</p>
+      <h2>Conclusion</h2>
+      <p>Ghana is striving to build a resilient and competitive economy, which requires not only youthful energy but also experienced guidance. Harnessing retired expertise in Ghana could strengthen institutions, support entrepreneurship, improve governance, and accelerate development. Retirement should never mean redundancy, and Ghana must sustain its human expertise. The time has come for a national conversation which ensures that the knowledge and wisdom of Ghana’s retired professionals remain a vital part of the country’s development journey. Thankfully, in a recent study in January 2026, the Centre for Retired Experts (CREX) affirmed that given the opportunity, retirees in Ghana are available, able and willing to continue working after retiring at age 60.</p>
+      <p><em>By Prof. Albert Martins<br>Centre for Retired Experts (CREX)<br>P.0. Box CT 22, Cantonments, Accra<br>Tel: 0266195525 / 0549249040<br>crexghana@gmail.com</em></p>
+    `
+  },
+  {
+    id: 8,
+    category: "PUBLICATIONS",
+    title: "How Retired Doctors, Nurses, Midwives and Medical Professionals Can Be Mobilised to Support Ghana’s Health Delivery System",
+    excerpt: "Mobilising retired doctors, nurses, midwives and medical professionals is not merely a matter of honouring their experience; it is a practical, affordable and achievable strategy for strengthening healthcare delivery.",
+    content: `
+      <p><em>By Dr. Christian Boamah-Mensah, Centre for Retired Experts (CREX)</em></p>
+      <h2>Introduction</h2>
+      <p>Ghana’s healthcare system has made remarkable progress over the years, yet it continues to face persistent challenges relating to workforce shortages, unequal distribution of health personnel, and the migration of skilled professionals to developed countries. While discussions often focus on training more doctors, nurses and midwives, one valuable resource remains largely underutilized: retired medical professionals.</p>
+      <p>Across the country are thousands of retired doctors, nurses, midwives, pharmacists, laboratory scientists and allied health professionals who possess decades of knowledge, experience and practical wisdom. Many remain physically active, mentally alert and deeply committed to serving society. The question is not whether Ghana has sufficient expertise to improve healthcare delivery, but whether we are willing to harness the expertise that already exists.</p>
+      
+      <h2>Workforce Challenges & Strategic Reserves</h2>
+      <p>The need is evident. Research on Ghana’s health workforce has consistently shown shortages and inequitable distribution of health personnel, particularly in rural and underserved communities. Although the density of physicians, nurses and midwives increased significantly between 2005 and 2017, workforce gaps continue to affect service delivery in many parts of the country. Studies by health workforce experts and the Ghana Health Service have highlighted the continuing challenge of staffing health facilities adequately and equitably.</p>
+      <p>Retired medical professionals represent a strategic reserve that can help bridge some of these gaps without the substantial cost of recruiting and training entirely new personnel. Their contribution, however, should not be viewed as a replacement for younger professionals but as a complementary resource that strengthens the entire health system. These professionals have time and are highly motivated than the mid-career professionals who are constrained by job and family obligations.</p>
+      
+      <h2>Global Case Studies & Best Practices</h2>
+      <p>Several countries have demonstrated the value of this approach. In the United States, the Medical Reserve Corps mobilizes retired and volunteer health professionals to support public health activities, emergencies and community outreach programmes. During the COVID-19 pandemic, retired doctors and nurses were re-engaged to support overwhelmed health systems. Similarly, the United Kingdom called upon retired National Health Service personnel to provide clinical and advisory support during periods of high demand. These experiences showed that retired professionals can serve effectively when supported by clear policies and appropriate structures. Other existing frameworks include the United Nations Volunteers program, Voluntary Services Oversees and the Peace Corps.</p>
+      
+      <h2>Proposed Framework: National Retired Health Corps</h2>
+      <p>Ghana can adapt these lessons to its own context. The Ministry of Health and the Ghana Health Service could establish a National Retired Health Professionals Corps. Membership would be voluntary and open to retired practitioners who are medically fit and willing to contribute. A national database could be created to capture their specialties, experience, geographical location and availability.</p>
+      <p>Rather than requiring retirees to work full-time, flexible engagement models should be adopted. Some could provide part-time clinical services in district hospitals and polyclinics. Others could support maternal and child health programmes, mentor newly qualified nurses and doctors, supervise community health workers, or participate in public health education campaigns. Experienced retired midwives, for example, could play a crucial role in mentoring younger colleagues in regions where maternal healthcare remains under pressure.</p>
+      
+      <h2>Leveraging Telemedicine & Digital Solutions</h2>
+      <p>Technology also creates new possibilities. Retired specialists residing in Accra, Kumasi, Takoradi or even abroad could provide telemedicine consultations and professional guidance to health facilities in remote districts. Such an approach would extend specialist expertise to underserved communities at relatively low cost.</p>
+      
+      <h2>Enhancing Medical Education & Adjunct Teaching</h2>
+      <p>Medical education is another area where retirees can make a significant contribution. Many nursing and medical schools face shortages of experienced instructors. Retired professionals could serve as adjunct lecturers, clinical supervisors and mentors, helping to shape the next generation of healthcare workers. Their practical experience often complements the academic knowledge offered in formal training institutions.</p>
+      
+      <h2>Policy Requirements & Licensing Frameworks</h2>
+      <p>For this initiative to succeed, policymakers must address concerns regarding licensing, professional indemnity, remuneration and working conditions. Retired professionals who volunteer should receive transportation allowances, modest stipends where appropriate, and access to continuous professional development opportunities. Most importantly, they should be treated with dignity and recognized as valuable national assets rather than as individuals whose usefulness ended at retirement.</p>
+      
+      <h2>Collaboration & Implementation Pathways</h2>
+      <p>The Centre for Retired Experts (CREX) and similar organisations could become important partners in identifying, recruiting and coordinating retired health professionals. Collaboration among the Ministry of Health, professional associations, teaching hospitals and development partners would further strengthen implementation.</p>
+      <p>Ghana is blessed with a generation of retired healthcare professionals who helped build the nation’s health system. Their retirement should not signify the end of their contribution to national development. Instead, it should mark a transition from full-time practice to strategic service, mentorship and knowledge transfer.</p>
+      
+      <h2>Conclusion</h2>
+      <p>At a time when healthcare systems around the world are searching for innovative ways to improve service delivery, Ghana has an opportunity to tap into a resource that already exists. Mobilising retired doctors, nurses, midwives and medical professionals is not merely a matter of honouring their experience; it is a practical, affordable and achievable strategy for strengthening healthcare delivery and improving health outcomes for all Ghanaians, if they could be deployed thoughtfully and respectfully.</p>
+      <p><em>Sources: Asamani et al. (2021), Human Resources for Health; Asamani et al. (2020), Human Resources for Health; World Health Organization (WHO) Human Resources for Health reports on Ghana.</em></p>
+    `
   }
 ];
 
@@ -522,6 +613,7 @@ const pathToPage = (path) => {
   if (path === '/contact')  return 'contact'
   if (path === '/partnerships') return 'partnerships'
   if (path === '/leadership') return 'leadership'
+  if (path === '/publications') return 'publications'
   return 'home'
 }
 
@@ -530,6 +622,7 @@ function App() {
   const [activeReason, setActiveReason] = useState(0)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [selectedPost, setSelectedPost] = useState(null)
+  const [selectedPubId, setSelectedPubId] = useState(null)
   const numbersRef = useRef(null)
   const SLIDE_DURATION = 8000
   const [adminClickCount, setAdminClickCount] = useState(0)
@@ -552,6 +645,7 @@ function App() {
       partnerships: '/partnerships',
       leadership:   '/leadership',
       admin:        '/admin',
+      publications: '/publications',
     }
     const newPath = pathMap[page] || '/'
     if (window.location.pathname !== newPath) {
@@ -576,6 +670,12 @@ function App() {
         element.scrollIntoView({ behavior: 'smooth' })
       }
     }, 100)
+  }
+
+  const handleOpenPublication = (post) => {
+    setSelectedPubId(post.id)
+    setCurrentPage('publications')
+    window.scrollTo(0, 0)
   }
 
   const getInitials = (name) => {
@@ -722,18 +822,25 @@ function App() {
       {/* Partner Logo Scroll Bar */}
       <section className="partner-logo-scroll">
         <div className="partner-logo-track">
-          {/* <img src="/CIMG.jpg" alt="CIMG" className="partner-logo-item" /> */}
-          {/* <img src="/CFAS.png" alt="CFAS" className="partner-logo-item" /> */}
+          {/* Original Set */}
+          <img src="/CIMG.jpg" alt="CIMG" className="partner-logo-item" />
+          <img src="/CFAS.png" alt="CFAS" className="partner-logo-item" />
           <img src="/YBF.png" alt="YBF" className="partner-logo-item" />
-          {/* <img src="/RCC-UPSA.png" alt="RCC-UPSA" className="partner-logo-item" /> */}
-          {/* <img src="/CIMG.jpg" alt="CIMG" className="partner-logo-item" /> */}
-          {/* <img src="/CFAS.png" alt="CFAS" className="partner-logo-item" /> */}
+          <img src="/RCC-UPSA.png" alt="RCC-UPSA" className="partner-logo-item" />
+          <img src="/CIMG.jpg" alt="CIMG" className="partner-logo-item" />
+          <img src="/CFAS.png" alt="CFAS" className="partner-logo-item" />
           <img src="/YBF.png" alt="YBF" className="partner-logo-item" />
-          {/* <img src="/RCC-UPSA.png" alt="RCC-UPSA" className="partner-logo-item" /> */}
-          {/* <img src="/CIMG.jpg" alt="CIMG" className="partner-logo-item" /> */}
-          {/* <img src="/CFAS.png" alt="CFAS" className="partner-logo-item" /> */}
+          <img src="/RCC-UPSA.png" alt="RCC-UPSA" className="partner-logo-item" />
+          
+          {/* Duplicated Set for Seamless Infinite Scroll */}
+          <img src="/CIMG.jpg" alt="CIMG" className="partner-logo-item" />
+          <img src="/CFAS.png" alt="CFAS" className="partner-logo-item" />
           <img src="/YBF.png" alt="YBF" className="partner-logo-item" />
-          {/* <img src="/RCC-UPSA.png" alt="RCC-UPSA" className="partner-logo-item" /> */}
+          <img src="/RCC-UPSA.png" alt="RCC-UPSA" className="partner-logo-item" />
+          <img src="/CIMG.jpg" alt="CIMG" className="partner-logo-item" />
+          <img src="/CFAS.png" alt="CFAS" className="partner-logo-item" />
+          <img src="/YBF.png" alt="YBF" className="partner-logo-item" />
+          <img src="/RCC-UPSA.png" alt="RCC-UPSA" className="partner-logo-item" />
         </div>
       </section>
 
@@ -982,15 +1089,45 @@ function App() {
           </div>
         </div>
       </section>
+      {/* Research, Insights & Thought Leadership Section */}
+      <section className="insights-section section-padding" id="insights" style={{ paddingBottom: '20px' }}>
+        <div className="container">
+          <div className="insights-header">
+            <div className="insights-header-text">
+              <span className="cta-small-label" style={{ color: 'var(--gold)', letterSpacing: '0.15em' }}>RESEARCH & PUBLICATIONS</span>
+              <h2 className="section-title" style={{ marginTop: '10px' }}>Insights & Publications</h2>
+              <p className="section-desc">
+                CREX is committed to documenting professional insights, promoting thought leadership, and disseminating research drawn from retirees’ experiences to inform development practice.
+              </p>
+            </div>
+          </div>
 
-
+          <div className="insights-layout" style={{ display: 'block' }}>
+            <div className="insights-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
+              {insights.slice(-3).reverse().map((post) => (
+                <div key={post.id} className="insight-card">
+                  <div>
+                    <span className="insight-category">{post.category}</span>
+                  </div>
+                  <h3 className="insight-title" style={{ cursor: 'pointer' }} onClick={() => handleOpenPublication(post)}>
+                    {post.title}
+                  </h3>
+                  <p className="insight-excerpt">{post.excerpt}</p>
+                  <button className="btn btn-secondary" style={{ width: 'fit-content', padding: '8px 16px', fontSize: '0.8rem' }} onClick={() => handleOpenPublication(post)}>
+                    Read Full Article
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* News & Events Section */}
-      <section className="news-events-section section-padding">
+      <section className="news-events-section section-padding" style={{ paddingTop: '40px' }}>
         <div className="container">
           <div className="section-header-centered" style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <span className="cta-small-label" style={{ color: 'var(--gold)', letterSpacing: '0.15em' }}>CREX BULLETIN</span>
-            <h2 className="section-title" style={{ marginTop: '10px' }}>News & Events</h2>
+            <h2 className="section-title">News & Events</h2>
             <p className="section-desc" style={{ margin: '20px auto 0', maxWidth: '800px' }}>
               Stay updated with the latest news, upcoming engagements, and recent activities of the Centre for Retired Experts.
             </p>
@@ -1114,6 +1251,8 @@ function App() {
         <LeadershipPage />
       ) : currentPage === 'partnerships' ? (
         <PartnershipsPage onNavigateToContact={() => { setCurrentPage('contact'); window.scrollTo(0, 0); }} />
+      ) : currentPage === 'publications' ? (
+        <PublicationsPage insights={insights} selectedId={selectedPubId} onBack={() => { setCurrentPage('home'); setSelectedPubId(null); }} />
       ) : (
         <ContactPage />
       )}
@@ -1163,7 +1302,7 @@ function App() {
                 <li><a href="#">Consultancy Services</a></li>
                 <li><a href="#">Capacity Development</a></li>
                 <li><a href="#">Advocacy & Policy</a></li>
-                <li><a href="#">Research & Publications</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); setCurrentPage('publications'); window.scrollTo(0, 0); }}>Research & Publications</a></li>
                 <li><a href="#">Retiree Engagement</a></li>
               </ul>
             </div>
