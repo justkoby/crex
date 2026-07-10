@@ -26,10 +26,11 @@ export default function PublicationsPage({ insights, selectedId, onBack }) {
     return insights.filter(post => post.category === cat).length
   }
 
-  // Filter posts based on active category
-  const filteredInsights = activeCategory === 'ALL'
+  // Filter posts based on active category and show recent first
+  const filteredInsights = (activeCategory === 'ALL'
     ? insights
     : insights.filter(post => post.category === activeCategory)
+  ).slice().reverse()
 
   const handleToggleExpand = (id) => {
     if (expandedId === id) {
