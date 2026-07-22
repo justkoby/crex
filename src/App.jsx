@@ -224,22 +224,10 @@ const projectsData = {
 
 const partnershipsData = [
   {
-    name: "Chartered Institute of Marketing, Ghana (CIMG)",
-    desc: "CIMG envisions to be the voice of marketing practice in Ghana, and aims to see both private and public organisations embrace the marketing concept and be marketing-oriented in their operations. CIMG’s mission is to lead in the development of world-class marketing professionals and practitioners for effective marketing practice in Ghana."
-  },
-  {
-    name: "The Centre for Ageing Studies (CFAS)",
-    desc: "The Centre for Ageing Studies (CFAS) is a Centre at the University of Ghana, Legon, established to advance multidisciplinary, cutting-edge research and educational programmes that will promote the well-being of older adults. CFAS aims to be a leader in ageing research in Africa, provides resources for healthy ageing, conducts cutting-edge research and provides training in ageing studies."
-  },
-  {
     name: "Youth Bridge Foundation (YBF)",
     desc: "The Youth Bridge Foundation (YBF) is an independent non-profit organisation committed to bridging gaps for positive youth development across the continent of Africa and the Diaspora. YBF achieves this purpose and mandate through cutting-edge and evidence-based youth research, sustained advocacy, training and mentorship."
-  },
-  {
-    name: "Research & Consultancy Centre (RCC - UPSA)",
-    desc: "The Research and Consultancy Centre (RCC) is a strategic centre in UPSA established to oversee, promote and administer all research and consultancy activities of the University. Since its establishment, the Centre has gained reputation for creating value for its clients and bring competitive advantage to their activities."
   }
-].filter(partner => partner.name.includes("Youth Bridge"));
+];
 
 
 const newsEventsData = {
@@ -823,24 +811,16 @@ function App() {
       <section className="partner-logo-scroll">
         <div className="partner-logo-track">
           {/* Original Set */}
-          <img src="/CIMG.jpg" alt="CIMG" className="partner-logo-item" />
-          <img src="/CFAS.png" alt="CFAS" className="partner-logo-item" />
           <img src="/YBF.png" alt="YBF" className="partner-logo-item" />
-          <img src="/RCC-UPSA.png" alt="RCC-UPSA" className="partner-logo-item" />
-          <img src="/CIMG.jpg" alt="CIMG" className="partner-logo-item" />
-          <img src="/CFAS.png" alt="CFAS" className="partner-logo-item" />
           <img src="/YBF.png" alt="YBF" className="partner-logo-item" />
-          <img src="/RCC-UPSA.png" alt="RCC-UPSA" className="partner-logo-item" />
+          <img src="/YBF.png" alt="YBF" className="partner-logo-item" />
+          <img src="/YBF.png" alt="YBF" className="partner-logo-item" />
           
           {/* Duplicated Set for Seamless Infinite Scroll */}
-          <img src="/CIMG.jpg" alt="CIMG" className="partner-logo-item" />
-          <img src="/CFAS.png" alt="CFAS" className="partner-logo-item" />
           <img src="/YBF.png" alt="YBF" className="partner-logo-item" />
-          <img src="/RCC-UPSA.png" alt="RCC-UPSA" className="partner-logo-item" />
-          <img src="/CIMG.jpg" alt="CIMG" className="partner-logo-item" />
-          <img src="/CFAS.png" alt="CFAS" className="partner-logo-item" />
           <img src="/YBF.png" alt="YBF" className="partner-logo-item" />
-          <img src="/RCC-UPSA.png" alt="RCC-UPSA" className="partner-logo-item" />
+          <img src="/YBF.png" alt="YBF" className="partner-logo-item" />
+          <img src="/YBF.png" alt="YBF" className="partner-logo-item" />
         </div>
       </section>
 
