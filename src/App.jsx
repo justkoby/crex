@@ -21,7 +21,7 @@ const slides = [
   {
     id: 2,
     label: "People",
-    image: "/img-2.jpg",
+    image: "/crex-img-3.jpg",
     headline: "Our careers built projects. Our retirement builds people",
     descriptor: "MENTORSHIP & SKILLS",
     supportingText: "At CREX, one story can train 100 engineers before they pour bad concrete",
@@ -39,7 +39,7 @@ const slides = [
   {
     id: 4,
     label: "Know-How",
-    image: "/img-4.jpg",
+    image: "/crex-img-9.jpg",
     headline: "Retirees have “know-how” that lives in their heads, hands and guts – not in a manual",
     descriptor: "PRACTICAL WISDOM",
     supportingText: "You can’t Google a gut feeling earned in 1984, but you can Google CREX for invaluable expertise, experience and guidance.",
@@ -57,7 +57,7 @@ const slides = [
   {
     id: 6,
     label: "Opportunity",
-    image: "/img-1.jpg",
+    image: "/crex-img-1.jpg",
     headline: "Connecting experience with opportunity",
     descriptor: "INTERGENERATIONAL TRANSFER",
     supportingText: "Experience becomes most valuable when it is shared. CREX connects retired professionals with opportunities to mentor and shape future leaders",
@@ -66,7 +66,7 @@ const slides = [
   {
     id: 7,
     label: "Insight",
-    image: "/img-2.jpg",
+    image: "/crex-img-5.jpg",
     headline: "Knowledge does not retire when professionals do",
     descriptor: "VALUABLE NATIONAL ASSET",
     supportingText: "Pension ends contracts, not competencies. The ID expires, the insight doesn’t. CREX is keeping Ghana’s smartest experts on duty",
@@ -75,7 +75,7 @@ const slides = [
   {
     id: 8,
     label: "Service",
-    image: "/img-3.jpg",
+    image: "/crex-img-4.jpg",
     headline: "Redefining retirement – the golden years of service",
     descriptor: "ACTIVE RETIREMENT",
     supportingText: "At CREX, we are retired, not expired. We are retired, not tired. Our stories, experiences and expertise still save careers, organisations, companies and lives",
@@ -151,7 +151,7 @@ const reasons = [
     label: "Expertise for National Development",
     headline: "Expertise for National Development",
     description: "Our network supports organisations, NGOs, public institutions, and development initiatives through consultancy, training, research, and strategic advisory services.",
-    image: "/img-3.jpg"
+    image: "/crex-img-8.jpg"
   }
 ]
 
@@ -161,35 +161,35 @@ const impactItems = [
     title: "Talent Identification & Database Development",
     description: "Systematically identifying, profiling, and maintaining a dynamic database of retired professionals across sectors.",
     tag: "Retired Experts Network",
-    image: "/img-4.jpg"
+    image: "/crex-img-4.jpg"
   },
   {
     id: 2,
     title: "Capacity Re-engagement & Continuous Development",
     description: "Providing orientation, upskilling, and retooling to align retirees’ expertise with current market and societal needs.",
     tag: "Training & Development",
-    image: "/img-5.jpg"
+    image: "/crex-img-5.jpg"
   },
   {
     id: 3,
     title: "Deployment & Consultancy Services",
     description: "Matching retirees to opportunities in public, private, and non-profit sectors for training, research, advisory, consultancy, mentorship, board appointment and project-based roles.",
     tag: "Consultancy & Advisory",
-    image: "/img-6.jpg"
+    image: "/crex-img-6.jpg"
   },
   {
     id: 4,
     title: "Advocacy & Policy Influence",
     description: "Promoting policies that recognise and integrate retirees as a vital component of national human capital.",
     tag: "Policy & Advocacy",
-    image: "/img-1.jpg"
+    image: "/crex-img-1.jpg"
   },
   {
     id: 5,
     title: "Research, Knowledge Management & Thought Leadership",
     description: "Researching, disseminating, and publishing insights drawn from retirees’ experiences to inform development practice.",
     tag: "Research & Publications",
-    image: "/img-2.jpg"
+    image: "/crex-img-2.jpg"
   }
 ];
 
@@ -542,7 +542,7 @@ const insights = [
 const featuredReport = {
   title: "The Future of Retiree Expertise in Africa",
   category: "2026 TRENDS REPORT",
-  image: "/report-cover.png",
+  image: "/crex-img-7.jpg",
   content: `
     <h2>Executive Summary</h2>
     <p>Africa is undergoing rapid demographic, economic, technological, and institutional transformation. As younger generations enter leadership and workforce systems, many experienced professionals retire from active service each year, often taking with them decades of valuable knowledge and expertise.</p>
@@ -864,13 +864,12 @@ function App() {
                     <div className={`impact-accent-line accent-line-${(index % 5) + 1}`}></div>
                     <p className="impact-card-desc">{item.description}</p>
                     <div className="impact-card-footer">
-                      <span className="impact-footer-icon">
-                        {index === 0 && "📂"}
-                        {index === 1 && "🎓"}
-                        {index === 2 && "💼"}
-                        {index === 3 && "⚖️"}
-                        {index === 4 && "🔍"}
-                      </span>
+                      {index >= 3 && (
+                        <span className="impact-footer-icon">
+                          {index === 3 && "⚖️"}
+                          {index === 4 && "🔍"}
+                        </span>
+                      )}
                       <span className="impact-footer-tag">{item.tag}</span>
                     </div>
                   </div>
@@ -884,7 +883,7 @@ function App() {
       {/* How It Works Section */}
       <section className="how-it-works-section section-padding white-bg" style={{ borderTop: '1px solid rgba(0,0,0,0.05)', backgroundColor: 'var(--warm-ivory)' }}>
         <div className="container">
-          <div className="section-header-centered" style={{ textAlign: 'center', marginBottom: '60px' }}>
+          <div className="section-header-centered" style={{ textAlign: 'center', marginBottom: '30px' }}>
             <span className="cta-small-label" style={{ color: 'var(--gold)', letterSpacing: '0.15em' }}>REGISTRATION STEPS</span>
             <h2 className="section-title" style={{ marginTop: '10px' }}>How It Works</h2>
             <p className="section-desc" style={{ margin: '20px auto 0', maxWidth: '800px' }}>
@@ -892,26 +891,26 @@ function App() {
             </p>
           </div>
 
-          <div className="steps-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px' }}>
-            <div className="step-card" style={{ background: 'var(--white)', padding: '40px 30px', borderRadius: '16px', textAlign: 'center', position: 'relative', boxShadow: '0 4px 20px rgba(0,0,0,0.02)' }}>
+          <div className="steps-grid">
+            <div className="step-card step-card-primary" style={{ background: 'var(--white)', padding: '28px 30px 40px', borderRadius: '16px', textAlign: 'center', position: 'relative' }}>
               <div className="step-number" style={{ width: '50px', height: '50px', background: 'var(--deep-wine)', color: 'var(--white)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', fontWeight: 'bold', fontSize: '1.2rem' }}>1</div>
               <h3 style={{ fontSize: '1.4rem', color: 'var(--deep-wine)', marginBottom: '15px' }}>Register as a Retired Expert</h3>
               <p style={{ fontSize: '0.95rem', color: 'var(--charcoal)', lineHeight: '1.6' }}>Fill out our comprehensive registration form to profile your background, skills, and areas of interest.</p>
-              <button className="btn btn-primary" style={{ marginTop: '20px', fontSize: '0.8rem', padding: '8px 16px' }} onClick={() => { setCurrentPage('register'); window.scrollTo(0, 0); }}>Start Registration</button>
+              <button className="btn btn-primary" onClick={() => { setCurrentPage('register'); window.scrollTo(0, 0); }}>Start Registration</button>
             </div>
             
-            <div className="step-card" style={{ background: 'var(--white)', padding: '40px 30px', borderRadius: '16px', textAlign: 'center', position: 'relative', boxShadow: '0 4px 20px rgba(0,0,0,0.02)' }}>
+            <div className="step-card step-card-secondary" style={{ background: 'var(--white)', padding: '28px 30px 40px', borderRadius: '16px', textAlign: 'center', position: 'relative' }}>
               <div className="step-number" style={{ width: '50px', height: '50px', background: 'var(--deep-wine)', color: 'var(--white)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', fontWeight: 'bold', fontSize: '1.2rem' }}>2</div>
               <h3 style={{ fontSize: '1.4rem', color: 'var(--deep-wine)', marginBottom: '15px' }}>View Terms and Conditions</h3>
               <p style={{ fontSize: '0.95rem', color: 'var(--charcoal)', lineHeight: '1.6' }}>Review our membership guidelines and terms of deployment to understand how we protect and value your contributions.</p>
-              <button className="btn btn-secondary" style={{ marginTop: '20px', fontSize: '0.8rem', padding: '8px 16px' }} onClick={() => { setCurrentPage('register'); window.scrollTo(0, 0); }}>View Terms</button>
+              <button className="btn btn-secondary" onClick={() => { setCurrentPage('register'); window.scrollTo(0, 0); }}>View Terms</button>
             </div>
 
-            <div className="step-card" style={{ background: 'var(--white)', padding: '40px 30px', borderRadius: '16px', textAlign: 'center', position: 'relative', boxShadow: '0 4px 20px rgba(0,0,0,0.02)' }}>
+            <div className="step-card step-card-secondary" style={{ background: 'var(--white)', padding: '28px 30px 40px', borderRadius: '16px', textAlign: 'center', position: 'relative' }}>
               <div className="step-number" style={{ width: '50px', height: '50px', background: 'var(--deep-wine)', color: 'var(--white)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', fontWeight: 'bold', fontSize: '1.2rem' }}>3</div>
               <h3 style={{ fontSize: '1.4rem', color: 'var(--deep-wine)', marginBottom: '15px' }}>View and Apply for a Job</h3>
               <p style={{ fontSize: '0.95rem', color: 'var(--charcoal)', lineHeight: '1.6' }}>Browse matching short-term advisory and consultancy roles, or let us match your profile directly to strategic requests.</p>
-              <button className="btn btn-secondary" style={{ marginTop: '20px', fontSize: '0.8rem', padding: '8px 16px' }} onClick={() => navigateToSection('.projects-partnerships-section')}>View Opportunities</button>
+              <button className="btn btn-secondary" onClick={() => navigateToSection('.projects-partnerships-section')}>View Opportunities</button>
             </div>
           </div>
         </div>
@@ -976,46 +975,58 @@ function App() {
             </p>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
-            {/* Projects Column - Full Width */}
-            <div className="projects-column">
-              <div className="project-group" style={{ marginBottom: '40px' }}>
-                <h4 className="project-group-title" style={{ color: 'var(--gold)', fontSize: '1.2rem', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '20px', letterSpacing: '0.05em' }}>Current Projects</h4>
-                <div className="project-list" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '20px' }}>
-                  {projectsData.current.map((proj, idx) => (
-                    <div className="project-card-item" key={idx} style={{ background: 'var(--white)', padding: '24px', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.03)' }}>
-                      <span className="project-status-badge current" style={{ display: 'inline-block', background: 'rgba(90, 16, 38, 0.1)', color: 'var(--deep-wine)', padding: '4px 12px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '12px' }}>Current</span>
-                      <h5 style={{ fontSize: '1.3rem', color: 'var(--deep-wine)', marginBottom: '8px' }}>{proj.title}</h5>
-                      <p style={{ fontSize: '0.95rem', color: 'var(--charcoal)', lineHeight: '1.5' }}>{proj.description}</p>
-                    </div>
-                  ))}
-                </div>
+          <div className="projects-board">
+            {/* Column 1: Current Projects */}
+            <div className="project-board-column column-current">
+              <div className="column-header">
+                <h4 className="column-title">Current Projects</h4>
+                <span className="column-count">
+                  {projectsData.current.length} {projectsData.current.length === 1 ? 'Project' : 'Projects'}
+                </span>
               </div>
-
-              <div className="project-group" style={{ marginBottom: '40px' }}>
-                <h4 className="project-group-title" style={{ color: 'var(--gold)', fontSize: '1.2rem', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '20px', letterSpacing: '0.05em' }}>Upcoming Projects</h4>
-                <div className="project-list" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '20px' }}>
-                  {projectsData.upcoming.map((proj, idx) => (
-                    <div className="project-card-item" key={idx} style={{ background: 'var(--white)', padding: '24px', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.03)' }}>
-                      <span className="project-status-badge upcoming" style={{ display: 'inline-block', background: 'rgba(201, 162, 39, 0.1)', color: '#a0801a', padding: '4px 12px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '12px' }}>Upcoming</span>
-                      <h5 style={{ fontSize: '1.3rem', color: 'var(--deep-wine)', marginBottom: '8px' }}>{proj.title}</h5>
-                      <p style={{ fontSize: '0.95rem', color: 'var(--charcoal)', lineHeight: '1.5' }}>{proj.description}</p>
-                    </div>
-                  ))}
-                </div>
+              <div className="project-card-list">
+                {projectsData.current.map((proj, idx) => (
+                  <div className="project-card-item" key={idx}>
+                    <h5>{proj.title}</h5>
+                    <p>{proj.description}</p>
+                  </div>
+                ))}
               </div>
+            </div>
 
-              <div className="project-group">
-                <h4 className="project-group-title" style={{ color: 'var(--gold)', fontSize: '1.2rem', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '20px', letterSpacing: '0.05em' }}>Completed Projects</h4>
-                <div className="project-list" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '20px' }}>
-                  {projectsData.completed.map((proj, idx) => (
-                    <div className="project-card-item" key={idx} style={{ background: 'var(--white)', padding: '24px', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.03)' }}>
-                      <span className="project-status-badge completed" style={{ display: 'inline-block', background: 'rgba(0,0,0,0.05)', color: '#666', padding: '4px 12px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '12px' }}>Completed</span>
-                      <h5 style={{ fontSize: '1.3rem', color: 'var(--deep-wine)', marginBottom: '8px' }}>{proj.title}</h5>
-                      <p style={{ fontSize: '0.95rem', color: 'var(--charcoal)', lineHeight: '1.5' }}>{proj.description}</p>
-                    </div>
-                  ))}
-                </div>
+            {/* Column 2: Upcoming Projects */}
+            <div className="project-board-column column-upcoming">
+              <div className="column-header">
+                <h4 className="column-title">Upcoming Projects</h4>
+                <span className="column-count">
+                  {projectsData.upcoming.length} {projectsData.upcoming.length === 1 ? 'Project' : 'Projects'}
+                </span>
+              </div>
+              <div className="project-card-list">
+                {projectsData.upcoming.map((proj, idx) => (
+                  <div className="project-card-item" key={idx}>
+                    <h5>{proj.title}</h5>
+                    <p>{proj.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Column 3: Completed Projects */}
+            <div className="project-board-column column-completed">
+              <div className="column-header">
+                <h4 className="column-title">Completed Projects</h4>
+                <span className="column-count">
+                  {projectsData.completed.length} {projectsData.completed.length === 1 ? 'Project' : 'Projects'}
+                </span>
+              </div>
+              <div className="project-card-list">
+                {projectsData.completed.map((proj, idx) => (
+                  <div className="project-card-item" key={idx}>
+                    <h5>{proj.title}</h5>
+                    <p>{proj.description}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -1025,47 +1036,38 @@ function App() {
       {/* Meet the Leadership Team */}
       <section className="experts-section section-padding">
         <div className="container">
-          <div className="experts-header" style={{ marginBottom: '80px' }}>
+          <div className="experts-header">
             <h2 className="section-title white">Meet the Leadership Team</h2>
             <p className="section-desc white-p">
               CREX brings together retired professionals, former executives, educators, researchers, engineers, public servants, and development experts whose decades of experience continue to create impact across Africa.
             </p>
-            <button className="btn btn-primary" onClick={() => { setCurrentPage('leadership'); window.scrollTo(0, 0); }}>Meet the Team</button>
           </div>
           
-          <div className="experts-slider-container">
-            <div className="experts-slider">
-              {experts.map((expert) => (
+          <div className="experts-grid-container">
+            <div className="experts-grid">
+              {experts.slice(0, 3).map((expert) => (
                 <div key={expert.id} className="expert-card" onClick={() => { setCurrentPage('leadership'); window.scrollTo(0, 0); }} style={{ cursor: 'pointer' }}>
-                  <div className="expert-photo-container">
-                    <div className="expert-photo-placeholder">
-                      <div className="expert-logo-box">CREX</div>
-                    </div>
-                    <div className="expert-hover-overlay">
-                      <blockquote className="expert-hover-quote">{expert.quote}</blockquote>
+                  <div className="expert-top">
+                    <div className="expert-avatar">{getInitials(expert.name)}</div>
+                    <div>
+                      <h4 className="expert-name">{expert.name}</h4>
+                      <p className="expert-role">{expert.role}</p>
                     </div>
                   </div>
-                  <div className="expert-info">
-                    <div className="expert-top">
-                      <div className="expert-avatar">{getInitials(expert.name)}</div>
-                      <div>
-                        <h4 className="expert-name">{expert.name}</h4>
-                      </div>
-                    </div>
-                    <p className="expert-role">{expert.role}</p>
-                    <p className="expert-description">{expert.expertise}</p>
-                    {expert.years && <p className="expert-experience">{expert.years}</p>}
-                    <div className="expert-tags">
-                      {expert.tags.map((tag, idx) => (
-                        <span key={idx} className="expert-tag">{tag}</span>
-                      ))}
-                    </div>
+                  <p className="expert-description">{expert.expertise}</p>
+                  <div className="expert-tags">
+                    {expert.tags.slice(0, 2).map((tag, idx) => (
+                      <span key={idx} className="expert-tag">{tag}</span>
+                    ))}
                   </div>
                 </div>
               ))}
             </div>
-            <div className="slider-instructions desktop-only">Scroll to explore →</div>
-            <button className="btn btn-secondary view-experts-mobile" onClick={() => { setCurrentPage('leadership'); window.scrollTo(0, 0); }}>View Full Team</button>
+            <div className="experts-cta-container">
+              <button className="btn btn-gold" onClick={() => { setCurrentPage('leadership'); window.scrollTo(0, 0); }}>
+                View Full Team
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -1119,6 +1121,7 @@ function App() {
               <h3 className="news-column-header" style={{ color: 'var(--deep-wine)', borderBottom: '1px solid #eee', paddingBottom: '10px', marginBottom: '20px', fontSize: '1.6rem' }}>Latest News</h3>
               {newsEventsData.news.map((item, idx) => (
                 <div className="news-item-card" key={idx} style={{ background: 'var(--warm-ivory)', padding: '30px', borderRadius: '16px' }}>
+                  <img src="/crex-img-3.jpg" alt="Research Dissemination Seminar Feature" style={{ width: '100%', height: '220px', objectFit: 'cover', objectPosition: 'center 20%', borderRadius: '12px', marginBottom: '20px' }} />
                   <span style={{ fontSize: '0.8rem', color: 'var(--gold)', fontWeight: 'bold', textTransform: 'uppercase' }}>{item.tag} • {item.date}</span>
                   <h4 style={{ fontSize: '1.4rem', color: 'var(--deep-wine)', marginTop: '10px', marginBottom: '15px', lineHeight: '1.3' }}>{item.title}</h4>
                   <p style={{ fontSize: '0.95rem', color: '#555', marginBottom: '20px' }}>
@@ -1172,7 +1175,7 @@ function App() {
         </div>
       </section>
 
-      {/* Gallery Section */}
+      {/* Gallery Section — CREX IN PICTURES */}
       <section className="gallery-section section-padding light-bg" style={{ textAlign: 'center' }}>
         <div className="container">
           <div className="section-header-centered" style={{ textAlign: 'center', marginBottom: '45px' }}>
@@ -1182,23 +1185,19 @@ function App() {
               Highlights from our workshops, courtesy calls, research activities, and community engagements.
             </p>
           </div>
-          <button className="btn btn-primary" onClick={() => { setCurrentPage('about'); window.scrollTo(0, 0); }} style={{ margin: '0 auto' }}>View Gallery</button>
-        </div>
-      </section>
 
-      {/* Final CTA Section */}
-      <section className="final-cta-section" style={{backgroundImage: 'url(/bg-01.jpg)'}}>
-        <div className="cta-overlay"></div>
-        <div className="cta-content">
-          <span className="cta-small-label">JOIN THE NETWORK</span>
-          <h2 className="cta-headline">Experience Still Has the Power to Transform Society</h2>
-          <p className="cta-text">
-            CREX connects retired professionals with opportunities to mentor, advise, train, consult, and contribute to sustainable development across Ghana and Africa.
-          </p>
-          <div className="cta-actions">
-            <button className="btn btn-primary cta-btn-gold" onClick={() => { setCurrentPage('register'); window.scrollTo(0, 0); }}>Register as a Retired Expert</button>
-            <button className="btn btn-secondary cta-btn-outline" onClick={() => { setCurrentPage('contact'); window.scrollTo(0, 0); }}>Partner With CREX</button>
+          <div className="gallery-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', marginBottom: '35px' }}>
+            <div className="gallery-card" style={{ borderRadius: '12px', overflow: 'hidden', height: '230px', position: 'relative' }}>
+              <img src="/crex-img-10.jpg" alt="CREX Seminar & Panel Dialogue" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
+            </div>
+            <div className="gallery-card" style={{ borderRadius: '12px', overflow: 'hidden', height: '230px', position: 'relative' }}>
+              <img src="/crex-img-13.jpg" alt="CREX Workshop & Participant Engagement" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
+            </div>
+            <div className="gallery-card" style={{ borderRadius: '12px', overflow: 'hidden', height: '230px', position: 'relative' }}>
+              <img src="/crex-img-9.jpg" alt="CREX Research & Community Deliberations" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
+            </div>
           </div>
+          <button className="btn btn-primary" onClick={() => { setCurrentPage('about'); window.scrollTo(0, 0); }} style={{ margin: '0 auto' }}>View Full Gallery</button>
         </div>
       </section>
 
@@ -1236,6 +1235,62 @@ function App() {
       ) : (
         <ContactPage />
       )}
+
+      {/* CREX Research Dissemination Seminar Video Section */}
+      <section className="seminar-video-section" style={{ backgroundColor: 'var(--warm-ivory)', padding: '60px 0', textAlign: 'center' }}>
+        <div className="container">
+          <div className="video-header" style={{ marginBottom: '32px' }}>
+            <span className="cta-small-label" style={{ color: 'var(--gold)', letterSpacing: '0.15em' }}>
+              CREX RESEARCH DISSEMINATION SEMINAR
+            </span>
+            <h2 className="section-title" style={{ color: 'var(--deep-wine)', marginTop: '10px' }}>
+              Productive Ageing in Ghana
+            </h2>
+          </div>
+          <div className="video-embed-wrapper" style={{ maxWidth: '960px', margin: '0 auto' }}>
+            <div className="video-aspect-ratio" style={{ position: 'relative', width: '100%', paddingBottom: '56.25%', height: 0, borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}>
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/gp9yR1IYUJA"
+                title="CREX Research Dissemination Seminar - Productive Ageing in Ghana"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* "In the CREX Community" Photo Marquee */}
+      <section className="community-marquee-section" aria-label="In the CREX Community">
+        <div className="marquee-label-wrapper">
+          <span className="marquee-label">IN THE CREX COMMUNITY</span>
+        </div>
+        <div className="community-marquee-track-container" tabIndex={0}>
+          <div className="community-marquee-track">
+            {/* Sequence 1 */}
+            <img src="/crex-img-3.jpg" alt="CREX Seminar Feature" className="marquee-img img-w-md" />
+            <img src="/crex-img-1.jpg" alt="CREX Community Engagement" className="marquee-img img-w-lg" />
+            <img src="/crex-img-2.jpg" alt="CREX Network Event" className="marquee-img img-w-sm" />
+            <img src="/crex-img-4.jpg" alt="CREX Interactive Session" className="marquee-img img-w-xl" />
+            <img src="/crex-img-7.jpg" alt="CREX Presentation" className="marquee-img img-w-md" />
+            <img src="/crex-img-10.jpg" alt="CREX Panel Discussion" className="marquee-img img-w-lg" />
+            <img src="/crex-img-11.jpg" alt="CREX Research Forum" className="marquee-img img-w-sm" />
+            <img src="/crex-img-13.jpg" alt="CREX Workshop Audience" className="marquee-img img-w-xl" />
+
+            {/* Duplicate Sequence for Seamless Loop */}
+            <img src="/crex-img-3.jpg" alt="" aria-hidden="true" className="marquee-img img-w-md" />
+            <img src="/crex-img-1.jpg" alt="" aria-hidden="true" className="marquee-img img-w-lg" />
+            <img src="/crex-img-2.jpg" alt="" aria-hidden="true" className="marquee-img img-w-sm" />
+            <img src="/crex-img-4.jpg" alt="" aria-hidden="true" className="marquee-img img-w-xl" />
+            <img src="/crex-img-7.jpg" alt="" aria-hidden="true" className="marquee-img img-w-md" />
+            <img src="/crex-img-10.jpg" alt="" aria-hidden="true" className="marquee-img img-w-lg" />
+            <img src="/crex-img-11.jpg" alt="" aria-hidden="true" className="marquee-img img-w-sm" />
+            <img src="/crex-img-13.jpg" alt="" aria-hidden="true" className="marquee-img img-w-xl" />
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="footer">

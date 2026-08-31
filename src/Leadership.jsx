@@ -26,15 +26,11 @@ Prof. Martins has a wealth of experience in Marketing practice and Business cons
       name: "Dr. Christian Boamah-Mensah",
       role: "Trustee",
       initials: "CBM",
-      bio: `Dr. Christian Boamah-Mensah is a distinguished Obstetrician and Gynaecologist with over three decades of experience in clinical practice, health administration, medical training, and reproductive health advocacy. His career has been defined by an unwavering commitment to improving maternal and reproductive healthcare, promoting gender-based violence response systems, and strengthening healthcare delivery in Ghana.
+      bio: `Dr. Christian Boamah-Mensah is an Obstetrician and Gynaecologist with over three decades of experience in clinical practice, health administration, medical training, and reproductive health advocacy.
 
-He obtained his Doctor of Medicine (M.D.) degree from the Russian Peoples' Friendship University, Moscow, and later earned Membership of the Ghana College of Physicians and Surgeons (MGCS) in Obstetrics and Gynaecology. He also holds a Diploma in Sexual and Reproductive Health and Rights from Lund University, Sweden, reflecting his strong interest in advancing women's health and reproductive rights.
+He has held many sensitive positions within the Ghana Police Service Medical Directorate, including specialist and leadership roles, and previously headed the Department of Obstetrics and Gynaecology at the Police Hospital, Accra.
 
-Dr. Boamah-Mensah served with distinction in the Ghana Police Service Medical Directorate from 1995 to 2022, rising through the ranks from Medical Officer to Deputy Commissioner of Police (DCOP) and Specialist Obstetrician and Gynaecologist. Between 2001 and 2006, he was the medical doctor to the then President, His Excellency President John Agyekum Kuffuour. Between 2016 and 2022, he was the Head of the Department of Obstetrics and Gynaecology at the Police Hospital, Accra, where he provided specialist clinical leadership, mentored healthcare professionals, and enhanced maternal healthcare services.
-
-Beyond clinical practice, Dr. Boamah-Mensah has contributed significantly to national policy development and capacity building. He has participated in several national consultative meetings and legislative reviews on Ghana's Domestic Violence Act, facilitated training programmes on essential services for survivors of violence against women and girls, and represented Ghana at international seminars on sexual and reproductive health and rights in Sweden and Uganda. His expertise has also been strengthened through numerous professional courses in trauma care, ultrasound, blood transfusion, health administration, and disaster management.
-
-Widely respected for his professionalism, leadership, and dedication to service, Dr Boamah-Mensah remains a passionate advocate for quality healthcare, patient welfare, and the empowerment of healthcare providers. His career reflects a lifelong commitment to excellence, compassion, and service to humanity.`
+Dr. Boamah-Mensah served with distinction in the Ghana Police Service Medical Directorate from 1995 to 2022, rising through the ranks from Medical Officer to Deputy Commissioner of Police (DCOP) and Specialist Obstetrician and Gynaecologist. Along his career, he handled many highly sensitive positions, including providing medical care for the nation's highest office. Between 2016 and 2022, he was the Head of the Department of Obstetrics and Gynaecology at the Police Hospital, Accra, where he provided specialist clinical leadership, mentored healthcare professionals, and enhanced maternal healthcare services.`
     },
     {
       name: "Dr. Mrs. Benedicta Quao",
